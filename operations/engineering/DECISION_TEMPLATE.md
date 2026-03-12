@@ -1,4 +1,4 @@
-# Decision Record Template
+# Decision Template
 
 ## Decision Title
 

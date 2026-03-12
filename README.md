@@ -106,7 +106,7 @@ these files and ends by updating them.
 | `engineering/CONTRIBUTING_WORKFLOW.md` | Step-by-step workflow for any contributor: what to read, how to implement, how to close a session. | When workflow changes. |
 | `engineering/BOOTSTRAP_CHECKLIST.md` | Required setup checklist for turning this template into a real project. | During initial setup and bootstrap audits. |
 | `engineering/NEXT_SESSION_TEMPLATE.md` | Template for the "next session starter" note that closes every session. | Reference only — fill in a copy at end of each session. |
-| `engineering/DECISION_RECORD_TEMPLATE.md` | Template for individual decision records. See `decisions/001_use_operations_scaffold.md` for a filled example. | Reference only — copy for each new decision. |
+| `engineering/DECISION_TEMPLATE.md` | Template for individual decision records. See `decisions/001_use_operations_scaffold.md` for a filled example. | Reference only — copy for each new decision. |
 | `engineering/ENV_SETUP_TEMPLATE.md` | Local development setup instructions: prerequisites, install steps, env vars, run commands. | When setup steps change. |
 | `engineering/PR_TEMPLATE.md` | Pull request description template with required sections. | Reference only — use when opening PRs. |
 | `engineering/CHANGELOG_TEMPLATE.md` | Changelog format for releases. | Reference only — copy for each release. |
@@ -313,7 +313,7 @@ To make the configuration permanent, edit the defaults at the top of the
 │   │   ├── DECISIONS_LOG.md
 │   │   ├── decisions/                 # Individual decision records
 │   │   ├── BOOTSTRAP_CHECKLIST.md
-│   │   ├── DECISION_RECORD_TEMPLATE.md
+│   │   ├── DECISION_TEMPLATE.md
 │   │   ├── ENV_SETUP_TEMPLATE.md
 │   │   ├── NEXT_SESSION_TEMPLATE.md
 │   │   ├── PR_TEMPLATE.md
