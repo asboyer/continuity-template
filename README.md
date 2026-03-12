@@ -1,47 +1,245 @@
-# Starter Project Template
+# Project Operations Template
 
-This folder is a generic starter project operations scaffold.
+A stack-neutral operations scaffold for bootstrapping new software projects with
+persistent memory, engineering governance, and LLM-assisted development
+workflows.
 
-It includes reusable template documents for:
+This template is designed to make agentic coding as efficient as possible. It
+gives every session — human or AI — full project context from the first line,
+enforces standards automatically, and ensures nothing is lost between sessions.
 
-- core mission
-- persistent memory
-- roadmap handoff
-- coding standards
-- architecture and decisions
-- contributing workflow
-- business and marketing planning
+---
 
-It now includes project-local prompt templates under `prompts/`, organized into:
+## Quick Start
 
-- `prompts/start`
-- `prompts/coding_prompts`
-- `prompts/business_prompts`
+```bash
+# 1. Copy this folder into your new project
+cp -r template/ my_project/ && cd my_project/
 
-It also includes engineering starter scaffolding:
+# 2. Initialize git
+git init -b master
 
-- `Makefile` with standard targets (`lint`, `format-check`, `test`, `check`)
-- `.pre-commit-config.yaml` starter
-- `.github/workflows/ci.yml` starter
-- `.github/ISSUE_TEMPLATE/` for bug/feature/tech debt
-- `.env.example` and `operations/engineering/ENV_SETUP_TEMPLATE.md`
-- PR, release, and decision record templates under `operations/engineering/`
+# 3. Install pre-commit hooks
+pre-commit install
 
-The build/lint/test scaffolding is stack-neutral by default and expects you to
-configure command hooks for your language/toolchain.
+# 4. Run the bootstrap prompt to populate all operations files
+#    Open your AI tool and paste the contents of:
+#    prompts/start/CORE_PROJECT_BOOTSTRAP_PROMPT.md
+#    The bootstrap prompt will ask for your mission, tech stack,
+#    and first milestone, then populate every operations file.
 
-## Start Here
+# 5. Verify all operations files were initialized
+make init-check
 
-1. Copy this folder into your new project.
-2. Initialize git: `git init -b master`
-3. Install pre-commit: `pre-commit install`
-4. Run the bootstrap prompt (`prompts/start/CORE_PROJECT_BOOTSTRAP_PROMPT.md`)
-   to populate all operations files and configure your stack.
-5. Verify setup: `make init-check`
-6. Run quality checks: `make check`
+# 6. Run quality checks
+make check
+```
 
-For ongoing sessions, follow `prompts/PROMPT_USAGE_ORDER.md`.
+> **AI tools with auto-loading (Claude Code, Cursor, GitHub Copilot):**
+> `CLAUDE.md` and `AGENTS.md` load project context automatically. After
+> bootstrap, you do not need to paste prompts manually — just start working.
+> The AI tool reads your conventions, read order, and boundaries on its own.
 
-> **AI tools with auto-loading:** If using Claude Code, Cursor, or GitHub
-> Copilot, the `CLAUDE.md` and `AGENTS.md` files load context automatically.
-> No need to paste prompts manually.
+---
+
+## What This Template Contains
+
+### `operations/` — The Project Brain
+
+This is where all project knowledge lives. Every session starts by reading
+these files and ends by updating them.
+
+| File | Purpose | When to Update |
+|------|---------|----------------|
+| `core/CORE_MISSION.md` | What the product does, why it exists, non-negotiable principles. This is the tie-breaker for all product decisions. | Rarely — only when the mission fundamentally changes. |
+| `core/MASTER_MEMORY.md` | The shared brain across all sessions. Contains project overview, architecture, current state, known issues, and a session log. | Every session — append a session log entry and update current state. |
+| `engineering/ROADMAP_PROGRESS.md` | The active milestone, what's shipped, what remains, and what's next. This is the execution handoff between sessions. | Every session — update status, remaining work, and next session note. |
+| `engineering/CODING_STANDARDS_AND_PR_CHECKLIST.md` | Naming conventions, commit format, PR requirements, and the LLM execution checklist. This is the engineering contract. | When standards evolve. Reference from day one. |
+| `engineering/ARCHITECTURE_OVERVIEW.md` | System components, data flow, external dependencies, interfaces, and observability approach. | When architecture changes. |
+| `engineering/DECISIONS_LOG.md` | Table of major decisions with rationale and links to detailed records. | When a significant decision is made. |
+| `engineering/CONTRIBUTING_WORKFLOW.md` | Step-by-step workflow for any contributor: what to read, how to implement, how to close a session. | When workflow changes. |
+| `engineering/NEXT_SESSION_STARTER_TEMPLATE.md` | Template for the "next session starter" note that closes every session. | Reference only — fill in a copy at end of each session. |
+| `engineering/DECISION_RECORD_TEMPLATE.md` | Template for individual decision records. See `decisions/001_use_operations_scaffold.md` for a filled example. | Reference only — copy for each new decision. |
+| `engineering/ENV_SETUP_TEMPLATE.md` | Local development setup instructions: prerequisites, install steps, env vars, run commands. | When setup steps change. |
+| `engineering/PR_TEMPLATE.md` | Pull request description template with required sections. | Reference only — use when opening PRs. |
+| `engineering/RELEASE_CHANGELOG_TEMPLATE.md` | Changelog format for releases. | Reference only — copy for each release. |
+| `engineering/INCIDENT_TEMPLATE.md` | Post-incident report template with timeline, root cause, and action items. | Reference only — copy for each incident. |
+| `engineering/decisions/` | Directory of individual decision records. | Add a new file for each major decision. |
+| `business/BUSINESS_PLAN.md` | Business plan: problem, market, model, financials, KPIs. | When business strategy changes. |
+| `business/MARKETING_PLAN.md` | Marketing plan: positioning, channels, campaigns, measurement. | When GTM strategy changes. |
+
+### `prompts/` — The Session Playbook
+
+Prompts are instructions you give to an AI tool (or follow yourself) at the
+start of different session types. They define what to read, what to do, and
+what to output.
+
+| Prompt | When to Use | What It Does |
+|--------|-------------|--------------|
+| `start/CORE_PROJECT_BOOTSTRAP_PROMPT.md` | First session only | Initializes all operations files, asks for your mission and tech stack, sets up the first milestone. |
+| `coding_prompts/LLM_HANDOFF_PROMPT_TEMPLATE.md` | Every implementation session | Reads project context, implements the highest-priority task, validates, updates docs, and writes a next session starter. |
+| `coding_prompts/REFACTOR_SETUP_PROMPT_TEMPLATE.md` | When cleaning up code | Guides safe, incremental refactoring with behavior parity and test-first requirements. |
+| `coding_prompts/SESSION_HEALTH_CHECK_PROMPT.md` | Every few sessions | Audits operations docs for staleness, placeholder rot, and cross-file inconsistencies. Read-only — reports issues without modifying files. |
+| `business_prompts/BUSINESS_PLAN_PROMPT_TEMPLATE.md` | When creating/updating business strategy | Generates a complete business plan from project context. |
+| `business_prompts/ROADMAP_PLAN_PROMPT_TEMPLATE.md` | When planning milestones | Creates an execution roadmap aligned to the business plan. |
+| `business_prompts/MARKETING_PLAN_PROMPT_TEMPLATE.md` | When planning GTM | Creates a marketing plan aligned to the business plan and mission. |
+
+**Prompt order matters.** See `prompts/PROMPT_USAGE_ORDER.md` for the full
+sequencing guide, decision rules, and session close requirements.
+
+### Root Files
+
+| File | Purpose |
+|------|---------|
+| `CLAUDE.md` | Auto-loaded by Claude Code. Contains read order, key commands, conventions, session rules, and boundaries. |
+| `AGENTS.md` | Auto-loaded by Cursor, GitHub Copilot, and tools supporting the AGENTS.md standard. Same content as CLAUDE.md in a cross-tool format. |
+| `Makefile` | Stack-neutral build targets: `lint`, `format-check`, `test`, `check`, `init-check`. Configure via `LINT_CMD`, `FORMAT_CHECK_CMD`, `TEST_CMD`. |
+| `.pre-commit-config.yaml` | Pre-commit hooks for whitespace, YAML validation, merge conflict detection. Add language-specific hooks for your stack. |
+| `.github/workflows/ci.yml` | CI pipeline: runs pre-commit hooks, validates template initialization, then runs lint/format/test via Makefile. |
+| `.github/dependabot.yml` | Keeps GitHub Actions versions up to date automatically. |
+| `.github/ISSUE_TEMPLATE/` | Structured templates for bug reports, feature requests, and tech debt. |
+| `.env.example` | Example environment variables. Copy to `.env` and fill in real values. Never commit `.env`. |
+| `.editorconfig` | Editor-agnostic formatting: 4-space indent, UTF-8, LF line endings, tabs for Makefile. |
+| `.markdownlint-cli2.yaml` | Markdown lint config tuned for template files (allows long lines, inline HTML, multiple headings). |
+| `SECURITY.md` | Security policy template with vulnerability reporting instructions. |
+| `.gitignore` | Ignores `.env`, `.DS_Store`, `node_modules/`, `__pycache__/`, `.venv/`. |
+
+---
+
+## How Sessions Work
+
+### Starting a Session
+
+1. The AI tool (or you) reads the files listed in the **session start read
+   order** (defined in `CLAUDE.md` and every coding prompt):
+   - `operations/core/CORE_MISSION.md`
+   - `operations/core/MASTER_MEMORY.md`
+   - `operations/engineering/ROADMAP_PROGRESS.md`
+   - `operations/engineering/CODING_STANDARDS_AND_PR_CHECKLIST.md`
+   - `operations/engineering/ARCHITECTURE_OVERVIEW.md`
+   - `operations/engineering/DECISIONS_LOG.md`
+
+2. The active milestone and immediate objective are identified from
+   `ROADMAP_PROGRESS.md`.
+
+3. Work begins on the highest-priority scoped task.
+
+### During a Session
+
+- Implement, then validate (lint + tests + manual checks).
+- If a significant decision is made, create a decision record and log it.
+- Follow the coding standards for naming, commits, and PR structure.
+
+### Closing a Session
+
+Every session must end with:
+
+1. A **session log entry** in `MASTER_MEMORY.md` containing:
+   - Date (YYYY-MM-DD)
+   - Objective pursued
+   - Outcome (completed / partial / blocked)
+   - Key decisions made
+   - Next step
+
+2. An updated **status** in `ROADMAP_PROGRESS.md` (what shipped, what
+   remains, risks).
+
+3. A **Next Session Starter** note — a specific, actionable first task for
+   whoever picks up next.
+
+### Source Precedence
+
+When documents conflict:
+- Latest explicit user instruction > roadmap > master memory > older docs.
+- Core mission is the tie-breaker for product-direction tradeoffs.
+
+---
+
+## Configuring for Your Stack
+
+The template ships with no language assumptions. During bootstrap, the AI tool
+will ask what stack you are using and configure:
+
+- **Makefile** — sets `LINT_CMD`, `FORMAT_CHECK_CMD`, `TEST_CMD` for your
+  toolchain.
+- **`.pre-commit-config.yaml`** — uncomments or adds hooks for your language
+  (examples for ruff/Python and eslint/JS are included as comments).
+- **`.env.example`** — adds any stack-specific environment variables.
+
+You can also configure manually:
+
+```bash
+# Example: Node.js project
+make check \
+  LINT_CMD="npm run lint" \
+  FORMAT_CHECK_CMD="npm run format:check" \
+  TEST_CMD="npm test"
+```
+
+To make the configuration permanent, edit the defaults at the top of the
+`Makefile`.
+
+---
+
+## Maintenance
+
+- **Run `make init-check`** after bootstrap to verify all operations files
+  are initialized with real content.
+- **Run the health check prompt** (`prompts/coding_prompts/SESSION_HEALTH_CHECK_PROMPT.md`)
+  every few sessions to catch stale docs and cross-file drift.
+- **Dependabot** keeps GitHub Actions versions current automatically.
+- **Pre-commit hooks** run on every commit locally. CI mirrors the same
+  checks to catch anything bypassed with `--no-verify`.
+
+---
+
+## File Map
+
+```
+.
+├── CLAUDE.md                          # AI context (Claude Code)
+├── AGENTS.md                          # AI context (cross-tool standard)
+├── SECURITY.md                        # Vulnerability reporting policy
+├── Makefile                           # Stack-neutral build targets
+├── .pre-commit-config.yaml            # Pre-commit hook config
+├── .editorconfig                      # Editor formatting rules
+├── .markdownlint-cli2.yaml            # Markdown lint config
+├── .env.example                       # Example environment variables
+├── .gitignore                         # Git ignore rules
+├── .github/
+│   ├── workflows/ci.yml               # CI pipeline
+│   ├── dependabot.yml                 # Dependency updates
+│   └── ISSUE_TEMPLATE/                # Bug, feature, tech debt templates
+├── operations/
+│   ├── core/
+│   │   ├── CORE_MISSION.md            # Mission and principles
+│   │   └── MASTER_MEMORY.md           # Persistent project memory
+│   ├── engineering/
+│   │   ├── ROADMAP_PROGRESS.md        # Active milestone and status
+│   │   ├── CODING_STANDARDS_AND_PR_CHECKLIST.md
+│   │   ├── ARCHITECTURE_OVERVIEW.md
+│   │   ├── CONTRIBUTING_WORKFLOW.md
+│   │   ├── DECISIONS_LOG.md
+│   │   ├── decisions/                 # Individual decision records
+│   │   ├── DECISION_RECORD_TEMPLATE.md
+│   │   ├── ENV_SETUP_TEMPLATE.md
+│   │   ├── NEXT_SESSION_STARTER_TEMPLATE.md
+│   │   ├── PR_TEMPLATE.md
+│   │   ├── RELEASE_CHANGELOG_TEMPLATE.md
+│   │   └── INCIDENT_TEMPLATE.md
+│   └── business/
+│       ├── BUSINESS_PLAN.md
+│       └── MARKETING_PLAN.md
+└── prompts/
+    ├── PROMPT_USAGE_ORDER.md           # Master sequencing guide
+    ├── start/
+    │   └── CORE_PROJECT_BOOTSTRAP_PROMPT.md
+    ├── coding_prompts/
+    │   ├── LLM_HANDOFF_PROMPT_TEMPLATE.md
+    │   ├── REFACTOR_SETUP_PROMPT_TEMPLATE.md
+    │   └── SESSION_HEALTH_CHECK_PROMPT.md
+    └── business_prompts/
+        ├── BUSINESS_PLAN_PROMPT_TEMPLATE.md
+        ├── ROADMAP_PLAN_PROMPT_TEMPLATE.md
+        └── MARKETING_PLAN_PROMPT_TEMPLATE.md
+```
