@@ -251,9 +251,13 @@ To make the configuration permanent, edit the defaults at the top of the
 ├── .env.example                       # Example environment variables
 ├── .gitignore                         # Git ignore rules
 ├── .github/
-│   ├── workflows/ci.yml               # CI pipeline
+│   ├── workflows/ci.yml.template      # CI pipeline (rename to ci.yml after bootstrap)
 │   ├── dependabot.yml                 # Dependency updates
 │   └── ISSUE_TEMPLATE/                # Bug, feature, tech debt templates
+├── src/                               # Application source code
+├── tests/                             # Test suite
+├── docs/                              # User/developer documentation
+├── scripts/                           # Utility and automation scripts
 ├── operations/
 │   ├── core/
 │   │   ├── CORE_MISSION.md            # Mission and principles

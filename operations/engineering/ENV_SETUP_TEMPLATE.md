@@ -14,6 +14,9 @@
 
 # initialize environment
 <setup command>
+
+# run setup scripts (if any)
+# see scripts/ for available helpers
 ```
 
 ## 3) Environment Variables

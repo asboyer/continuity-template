@@ -4,6 +4,13 @@
 
 <Describe the system at a high level.>
 
+## Project Structure
+
+- `src/` — Application source code (organize by feature/domain)
+- `tests/` — Test suite (mirrors src/ structure)
+- `docs/` — User-facing and developer documentation
+- `scripts/` — Utility and automation scripts
+
 ## Components
 
 - <component 1>

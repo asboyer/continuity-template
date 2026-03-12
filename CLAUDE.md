@@ -9,10 +9,14 @@ workflows. It is stack-neutral by default.
 ## Directory Structure
 
 ```
+src/              — Application source code (organize by feature/domain)
+tests/            — Test suite (mirrors src/ structure)
+docs/             — User-facing and developer documentation
+scripts/          — Utility and automation scripts
 operations/
-  core/         — Mission, persistent memory (read every session)
-  engineering/  — Standards, architecture, roadmap, decisions, templates
-  business/     — Business plan, marketing plan
+  core/           — Mission, persistent memory (read every session)
+  engineering/    — Standards, architecture, roadmap, decisions, templates
+  business/       — Business plan, marketing plan
 prompts/
   start/            — First-session bootstrap prompt
   coding_prompts/   — Implementation and refactor session prompts

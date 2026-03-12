@@ -19,6 +19,10 @@ Configure for your stack: `make check LINT_CMD="npm run lint" TEST_CMD="npm test
 
 ## Project Structure
 
+- `src/` — Application source code (organize by feature/domain)
+- `tests/` — Test suite (mirrors src/ structure)
+- `docs/` — User-facing and developer documentation
+- `scripts/` — Utility and automation scripts
 - `operations/core/` — Mission and persistent memory (read every session)
 - `operations/engineering/` — Standards, architecture, roadmap, decisions
 - `operations/business/` — Business and marketing plans
