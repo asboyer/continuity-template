@@ -1,0 +1,28 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main, master]
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Configure stack commands
+        run: |
+          echo "LINT_CMD=${LINT_CMD:-echo \"Set LINT_CMD for this repository stack.\"}" >> "$GITHUB_ENV"
+          echo "FORMAT_CHECK_CMD=${FORMAT_CHECK_CMD:-echo \"Set FORMAT_CHECK_CMD for this repository stack.\"}" >> "$GITHUB_ENV"
+          echo "TEST_CMD=${TEST_CMD:-echo \"Set TEST_CMD for this repository stack.\"}" >> "$GITHUB_ENV"
+
+      - name: Lint
+        run: make lint LINT_CMD="$LINT_CMD"
+
+      - name: Format check
+        run: make format-check FORMAT_CHECK_CMD="$FORMAT_CHECK_CMD"
+
+      - name: Test
+        run: make test TEST_CMD="$TEST_CMD"
