@@ -8,7 +8,9 @@ and operationalize this project's execution system, persistent memory, and
 engineering discipline so future sessions continue reliably.
 
 ## Git Setup
-Initialize the repository with `master` as the default branch.
+Assume `scripts/init_project.sh` has already reinitialized the repository and
+set the default branch. If it has not been run yet, tell the user to run it
+before continuing with bootstrap.
 
 ## Stack Configuration
 Ask the user what language/framework they are using. Based on their answer,
@@ -18,6 +20,9 @@ configure:
 2) .pre-commit-config.yaml — uncomment or add the appropriate language-specific
    hooks
 3) .env.example — add any stack-specific environment variables
+4) .github/workflows/ci.yml.template — tell the user to rename it to
+   `.github/workflows/ci.yml` when instantiating the template and record whether
+   CI has been activated in MASTER_MEMORY.md
 
 If the user is unsure or wants to decide later, leave the stack-neutral defaults
 in place and note this in MASTER_MEMORY.md as a pending decision.
@@ -35,6 +40,7 @@ high-quality content:
 7) operations/engineering/CONTRIBUTING_WORKFLOW.md
 8) operations/business/BUSINESS_PLAN.md
 9) operations/business/MARKETING_PLAN.md
+10) operations/engineering/BOOTSTRAP_COMPLETION_CHECKLIST.md
 
 ## Context Priority
 Read and apply in order:
@@ -46,7 +52,8 @@ Read and apply in order:
 6) operations/engineering/DECISIONS_LOG.md
 7) operations/business/BUSINESS_PLAN.md (if present)
 8) operations/business/MARKETING_PLAN.md (if present)
-9) current codebase
+9) operations/engineering/BOOTSTRAP_COMPLETION_CHECKLIST.md
+10) current codebase
 
 If sources conflict:
 - latest explicit user instruction > roadmap > master memory > older docs
@@ -67,7 +74,8 @@ If sources conflict:
 4) update impacted docs
 5) append session log in operations/core/MASTER_MEMORY.md
 6) update status + next handoff in operations/engineering/ROADMAP_PROGRESS.md
-7) end with a concise Next Session Starter note
+7) confirm bootstrap checklist status if this is the first session
+8) end with a concise Next Session Starter note
 
 ## Session Log Entry Schema
 Every MASTER_MEMORY.md session log entry must include:
@@ -82,8 +90,10 @@ After setup, return:
 1) files created/updated (with summary of content for each)
 2) architecture summary
 3) active milestone definition
-4) next 3 implementation steps
-5) assumptions made (flag any that need user confirmation)
+4) stack/tooling decisions, including CI activation status
+5) bootstrap checklist status (complete/incomplete + missing items)
+6) next 3 implementation steps
+7) assumptions made (flag any that need user confirmation)
 
 ## Do NOT
 - Do NOT begin feature implementation before all operations files are initialized

@@ -57,27 +57,29 @@ with a clean handoff.
 ## Quick Start
 
 ```bash
-# 1. Copy this folder into your new project
-cp -r template/ my_project/ && cd my_project/
+# 1. Clone the template
+git clone <template-repo-url> my_project && cd my_project
 
-# 2. Initialize git
-git init -b master
+# 2. Initialize the cloned repository as your own project
+scripts/init_project.sh --project-name "My Project"
 
-# 3. Install pre-commit hooks
-pre-commit install
-
-# 4. Run the bootstrap prompt to populate all operations files
-#    Open your AI tool and paste the contents of:
+# 3. Run the bootstrap prompt to populate all operations files
+#    Open your AI tool and use:
 #    prompts/start/CORE_PROJECT_BOOTSTRAP_PROMPT.md
-#    The bootstrap prompt will ask for your mission, tech stack,
-#    and first milestone, then populate every operations file.
 
-# 5. Verify all operations files were initialized
+# 4. Verify initialization and quality checks
 make init-check
-
-# 6. Run quality checks
 make check
 ```
+
+The initializer script:
+
+- removes template git history and reinitializes the repo,
+- creates a single initialization commit when git identity is configured,
+- renames `.github/workflows/ci.yml.template` to `.github/workflows/ci.yml`,
+- moves the template README to `docs/TEMPLATE_SETUP_INSTRUCTIONS.md`,
+- creates a new project-facing `README.md`,
+- installs `pre-commit` when possible, then activates the hooks.
 
 > **AI tools with auto-loading (Claude Code, Cursor, GitHub Copilot):**
 > `CLAUDE.md` and `AGENTS.md` load project context automatically. After
@@ -102,6 +104,7 @@ these files and ends by updating them.
 | `engineering/ARCHITECTURE_OVERVIEW.md` | System components, data flow, external dependencies, interfaces, and observability approach. | When architecture changes. |
 | `engineering/DECISIONS_LOG.md` | Table of major decisions with rationale and links to detailed records. | When a significant decision is made. |
 | `engineering/CONTRIBUTING_WORKFLOW.md` | Step-by-step workflow for any contributor: what to read, how to implement, how to close a session. | When workflow changes. |
+| `engineering/BOOTSTRAP_COMPLETION_CHECKLIST.md` | Required setup checklist for turning this template into a real project. | During initial setup and bootstrap audits. |
 | `engineering/NEXT_SESSION_STARTER_TEMPLATE.md` | Template for the "next session starter" note that closes every session. | Reference only — fill in a copy at end of each session. |
 | `engineering/DECISION_RECORD_TEMPLATE.md` | Template for individual decision records. See `decisions/001_use_operations_scaffold.md` for a filled example. | Reference only — copy for each new decision. |
 | `engineering/ENV_SETUP_TEMPLATE.md` | Local development setup instructions: prerequisites, install steps, env vars, run commands. | When setup steps change. |
@@ -131,6 +134,9 @@ what to output.
 **Prompt order matters.** See `prompts/PROMPT_USAGE_ORDER.md` for the full
 sequencing guide, decision rules, and session close requirements.
 
+Bootstrap is not complete until
+`operations/engineering/BOOTSTRAP_COMPLETION_CHECKLIST.md` has been reviewed.
+
 ### Root Files
 
 | File | Purpose |
@@ -138,8 +144,8 @@ sequencing guide, decision rules, and session close requirements.
 | `CLAUDE.md` | Auto-loaded by Claude Code. Contains read order, key commands, conventions, session rules, and boundaries. |
 | `AGENTS.md` | Auto-loaded by Cursor, GitHub Copilot, and tools supporting the AGENTS.md standard. Same content as CLAUDE.md in a cross-tool format. |
 | `Makefile` | Stack-neutral build targets: `lint`, `format-check`, `test`, `check`, `init-check`. Configure via `LINT_CMD`, `FORMAT_CHECK_CMD`, `TEST_CMD`. |
-| `.pre-commit-config.yaml` | Pre-commit hooks for whitespace, YAML validation, merge conflict detection. Add language-specific hooks for your stack. |
-| `.github/workflows/ci.yml` | CI pipeline: runs pre-commit hooks, validates template initialization, then runs lint/format/test via Makefile. |
+| `.pre-commit-config.yaml` | Pre-commit hooks for whitespace, YAML/JSON validation, merge conflict detection, private keys, and large files. Add language-specific hooks for your stack. |
+| `.github/workflows/ci.yml.template` | CI workflow template. Rename to `.github/workflows/ci.yml` when you instantiate a real project from this template. |
 | `.github/dependabot.yml` | Keeps GitHub Actions versions up to date automatically. |
 | `.github/ISSUE_TEMPLATE/` | Structured templates for bug reports, feature requests, and tech debt. |
 | `.env.example` | Example environment variables. Copy to `.env` and fill in real values. Never commit `.env`. |
@@ -147,6 +153,35 @@ sequencing guide, decision rules, and session close requirements.
 | `.markdownlint-cli2.yaml` | Markdown lint config tuned for template files (allows long lines, inline HTML, multiple headings). |
 | `SECURITY.md` | Security policy template with vulnerability reporting instructions. |
 | `.gitignore` | Ignores `.env`, `.DS_Store`, `node_modules/`, `__pycache__/`, `.venv/`. |
+
+---
+
+## Initializer
+
+Run `scripts/init_project.sh --project-name "Your Project"` immediately after
+cloning this repository for a new project.
+
+The script is intentionally opinionated:
+
+- It deletes the inherited `.git/` directory and creates a fresh repository.
+- It keeps the default branch as `master` unless you override it.
+- It activates the CI workflow by renaming the template workflow file.
+- It moves this template README to `docs/TEMPLATE_SETUP_INSTRUCTIONS.md`.
+- It writes a project README stub so the new repository has its own top-level
+  documentation.
+- It installs `pre-commit` when possible, then activates the hooks.
+
+If you need a different branch name or want to skip the first commit, run:
+
+```bash
+scripts/init_project.sh \
+  --project-name "Your Project" \
+  --default-branch main \
+  --skip-commit
+```
+
+The generated project README is based on
+`docs/PROJECT_README_TEMPLATE.md`.
 
 ---
 
@@ -209,6 +244,8 @@ will ask what stack you are using and configure:
 - **`.pre-commit-config.yaml`** — uncomments or adds hooks for your language
   (examples for ruff/Python and eslint/JS are included as comments).
 - **`.env.example`** — adds any stack-specific environment variables.
+- **`.github/workflows/ci.yml`** — after you rename the template file, set any
+  repository-specific environment or command defaults needed by CI.
 
 You can also configure manually:
 
@@ -227,6 +264,12 @@ To make the configuration permanent, edit the defaults at the top of the
 
 ## Maintenance
 
+- **Rename `.github/workflows/ci.yml.template` to `.github/workflows/ci.yml`**
+  when turning this template into a real repository. The template keeps the
+  workflow in `.template` form so it is explicit that activation is part of
+  project setup.
+- **Review `operations/engineering/BOOTSTRAP_COMPLETION_CHECKLIST.md`** before
+  declaring the project ready for feature work.
 - **Run `make init-check`** after bootstrap to verify all operations files
   are initialized with real content.
 - **Run the health check prompt** (`prompts/coding_prompts/SESSION_HEALTH_CHECK_PROMPT.md`)
@@ -269,6 +312,7 @@ To make the configuration permanent, edit the defaults at the top of the
 │   │   ├── CONTRIBUTING_WORKFLOW.md
 │   │   ├── DECISIONS_LOG.md
 │   │   ├── decisions/                 # Individual decision records
+│   │   ├── BOOTSTRAP_COMPLETION_CHECKLIST.md
 │   │   ├── DECISION_RECORD_TEMPLATE.md
 │   │   ├── ENV_SETUP_TEMPLATE.md
 │   │   ├── NEXT_SESSION_STARTER_TEMPLATE.md

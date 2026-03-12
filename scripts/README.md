@@ -8,6 +8,7 @@ Examples of what belongs in this directory:
 - Deployment helpers
 - Local development setup scripts
 - One-off data processing scripts
+- Template/project initialization scripts
 
 These are not application code. They support the development and operations
 workflow.
