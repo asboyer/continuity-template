@@ -39,6 +39,45 @@ install_pre_commit() {
     exit 1
 }
 
+celebrate() {
+    if [ ! -t 1 ]; then
+        printf '\nHappy coding! -asboyer\n'
+        return 0
+    fi
+
+    frames='
+      .     *        .       *        .
+    *   \o/   .   *     .   \o/   *    
+      .  |   *       .      |      .   
+    .   / \      *      .  / \   *     
+
+      *     .   *   BOOM   *    .      
+    .   \o/   *    .    *    \o/   .   
+      .  |      *   .     *   |    *   
+    *   / \  .    *    .     / \   .   
+'
+
+    printf '\n'
+    i=0
+    while [ "$i" -lt 2 ]; do
+        printf '\033[2J\033[H'
+        printf '%s\n' "$frames" | sed -n '1,4p'
+        sleep 0.18
+        printf '\033[2J\033[H'
+        printf '%s\n' "$frames" | sed -n '6,9p'
+        sleep 0.18
+        i=$((i + 1))
+    done
+
+    printf '\033[2J\033[H'
+    cat <<'EOF'
+        *     .  *   .     *   .  *
+      .   *  Project initialized.  *   .
+        .    Happy coding! -asboyer   *
+      *   .     *   .    *    .     .  
+EOF
+}
+
 PROJECT_NAME=""
 DEFAULT_BRANCH="master"
 COMMIT_MESSAGE="chore: initialize project from template"
@@ -167,3 +206,5 @@ Next steps:
 2. Run the bootstrap prompt in prompts/start/CORE_PROJECT_BOOTSTRAP_PROMPT.md.
 3. Complete operations/engineering/BOOTSTRAP_COMPLETION_CHECKLIST.md.
 EOF
+
+celebrate
