@@ -58,7 +58,7 @@ with a clean handoff.
 
 ```bash
 # 1. Clone the template
-git clone <template-repo-url> my_project && cd my_project
+git clone https://github.com/asboyer/template.git my_project && cd my_project
 
 # 2. Initialize the cloned repository as your own project
 scripts/init_project.sh --project-name "My Project"
@@ -152,7 +152,7 @@ Bootstrap is not complete until
 | `.editorconfig` | Editor-agnostic formatting: 4-space indent, UTF-8, LF line endings, tabs for Makefile. |
 | `.markdownlint-cli2.yaml` | Markdown lint config tuned for template files (allows long lines, inline HTML, multiple headings). |
 | `SECURITY.md` | Security policy template with vulnerability reporting instructions. |
-| `.gitignore` | Ignores `.env`, `.DS_Store`, `node_modules/`, `__pycache__/`, `.venv/`. |
+| `.gitignore` | Ignores common environment files, caches, build outputs, editor state, logs, and stack-specific local artifacts. |
 
 ---
 
@@ -264,10 +264,9 @@ To make the configuration permanent, edit the defaults at the top of the
 
 ## Maintenance
 
-- **Rename `.github/workflows/ci.yml.template` to `.github/workflows/ci.yml`**
-  when turning this template into a real repository. The template keeps the
-  workflow in `.template` form so it is explicit that activation is part of
-  project setup.
+- **Run `scripts/init_project.sh`** when turning this template into a real
+  repository. It activates the CI workflow, resets git history, and creates
+  the project-facing README for you.
 - **Review `operations/engineering/BOOTSTRAP_CHECKLIST.md`** before
   declaring the project ready for feature work.
 - **Run `make init-check`** after bootstrap to verify all operations files
