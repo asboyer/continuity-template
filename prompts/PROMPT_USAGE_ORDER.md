@@ -12,6 +12,13 @@ This initializes and/or validates the `operations/` knowledge system.
 
 1. `prompts/coding_prompts/LLM_HANDOFF_PROMPT_TEMPLATE.md`
 2. Optional: `prompts/coding_prompts/REFACTOR_SETUP_PROMPT_TEMPLATE.md`
+3. Periodic: `prompts/coding_prompts/SESSION_HEALTH_CHECK_PROMPT.md`
+
+> **AI tools with auto-loading (Claude Code, Cursor, GitHub Copilot):**
+> When using tools that auto-load `CLAUDE.md` or `AGENTS.md`, the session
+> context and conventions are loaded automatically. You do not need to paste
+> the handoff prompt manually — just start working. Use the handoff prompt
+> only when working with tools that lack auto-loading.
 
 These prompts require reading and updating:
 
@@ -49,3 +56,9 @@ Every session must end by updating:
 - `operations/engineering/ROADMAP_PROGRESS.md`
 
 and adding a concise "Next Session Starter" note.
+
+## 6) Health Check (periodic maintenance)
+
+Run `prompts/coding_prompts/SESSION_HEALTH_CHECK_PROMPT.md` every few sessions
+to detect stale docs, placeholder-only content, and cross-file inconsistencies.
+This is a read-only audit — it reports issues but does not modify files.

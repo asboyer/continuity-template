@@ -12,6 +12,17 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Set up Python (for pre-commit)
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Run pre-commit hooks
+        uses: pre-commit/action@v3.0.1
+
+      - name: Validate template initialization
+        run: make init-check
+
       - name: Configure stack commands
         run: |
           echo "LINT_CMD=${LINT_CMD:-echo \"Set LINT_CMD for this repository stack.\"}" >> "$GITHUB_ENV"

@@ -23,6 +23,7 @@ prompts/
 
 ```bash
 make check                    # Run all quality checks (lint + format + test)
+make init-check               # Verify operations files are initialized
 make lint                     # Lint only
 make test                     # Test only
 pre-commit run --all-files    # Run all pre-commit hooks
@@ -51,9 +52,15 @@ Commands are stack-neutral. Configure via `LINT_CMD`, `FORMAT_CHECK_CMD`, `TEST_
 Latest explicit user instruction > roadmap > master memory > older docs.
 Core mission is tie-breaker for product-direction tradeoffs.
 
+## Session Log Entry Schema
+
+Every `MASTER_MEMORY.md` session log entry must include:
+- Date (YYYY-MM-DD), objective pursued, outcome (completed/partial/blocked),
+  key decisions made, next step.
+
 ## Session End — Always
 
-1. Update `operations/core/MASTER_MEMORY.md` (session log entry)
+1. Update `operations/core/MASTER_MEMORY.md` (session log entry per schema above)
 2. Update `operations/engineering/ROADMAP_PROGRESS.md` (status + next)
 3. Add a concise Next Session Starter note
 

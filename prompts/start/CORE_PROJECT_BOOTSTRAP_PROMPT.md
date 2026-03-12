@@ -10,6 +10,18 @@ engineering discipline so future sessions continue reliably.
 ## Git Setup
 Initialize the repository with `master` as the default branch.
 
+## Stack Configuration
+Ask the user what language/framework they are using. Based on their answer,
+configure:
+1) Makefile — set LINT_CMD, FORMAT_CHECK_CMD, and TEST_CMD defaults for their
+   stack
+2) .pre-commit-config.yaml — uncomment or add the appropriate language-specific
+   hooks
+3) .env.example — add any stack-specific environment variables
+
+If the user is unsure or wants to decide later, leave the stack-neutral defaults
+in place and note this in MASTER_MEMORY.md as a pending decision.
+
 ## First Action
 Before feature work, ensure these files exist and are initialized with
 high-quality content:

@@ -32,7 +32,16 @@ configure command hooks for your language/toolchain.
 
 ## Start Here
 
-1. Copy this `project-template/` folder into your new project.
-2. Fill in placeholders in the files under `operations/`.
-3. Use prompts in `prompts/PROMPT_USAGE_ORDER.md`.
-4. Use your bootstrap prompt to initialize session behavior.
+1. Copy this folder into your new project.
+2. Initialize git: `git init -b master`
+3. Install pre-commit: `pre-commit install`
+4. Run the bootstrap prompt (`prompts/start/CORE_PROJECT_BOOTSTRAP_PROMPT.md`)
+   to populate all operations files and configure your stack.
+5. Verify setup: `make init-check`
+6. Run quality checks: `make check`
+
+For ongoing sessions, follow `prompts/PROMPT_USAGE_ORDER.md`.
+
+> **AI tools with auto-loading:** If using Claude Code, Cursor, or GitHub
+> Copilot, the `CLAUDE.md` and `AGENTS.md` files load context automatically.
+> No need to paste prompts manually.

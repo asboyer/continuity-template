@@ -1,4 +1,4 @@
-.PHONY: help lint format-check test check
+.PHONY: help lint format-check test check init-check
 
 # Language-agnostic command hooks.
 # Override these in your environment or CI, for example:
@@ -28,3 +28,25 @@ test:
 
 check: lint format-check test
 	@echo "All checks completed."
+
+# Required operations files that must exist and contain real content.
+REQUIRED_FILES = \
+	operations/core/CORE_MISSION.md \
+	operations/core/MASTER_MEMORY.md \
+	operations/engineering/ROADMAP_PROGRESS.md \
+	operations/engineering/CODING_STANDARDS_AND_PR_CHECKLIST.md \
+	operations/engineering/ARCHITECTURE_OVERVIEW.md \
+	operations/engineering/DECISIONS_LOG.md \
+	operations/engineering/CONTRIBUTING_WORKFLOW.md
+
+init-check:
+	@status=0; \
+	for f in $(REQUIRED_FILES); do \
+		if [ ! -f "$$f" ]; then \
+			echo "MISSING: $$f"; status=1; \
+		elif grep -q '<.*>' "$$f" && ! grep -q '^#' "$$f" | grep -qv '<'; then \
+			echo "PLACEHOLDER-ONLY: $$f"; status=1; \
+		fi; \
+	done; \
+	if [ $$status -eq 0 ]; then echo "All operations files initialized."; fi; \
+	exit $$status
