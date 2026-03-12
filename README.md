@@ -1,8 +1,8 @@
-# Project Operations Template
+# Continuity Template
 
-A stack-neutral operations scaffold for bootstrapping new software projects with
-persistent memory, engineering governance, and LLM-assisted development
-workflows.
+Continuity Template is a stack-neutral operations scaffold for bootstrapping
+new software projects with persistent memory, engineering governance, and
+LLM-assisted development workflows.
 
 This template is designed to make agentic coding as efficient as possible. It
 gives every session — human or AI — full project context from the first line,
@@ -58,7 +58,7 @@ with a clean handoff.
 
 ```bash
 # 1. Clone the template
-git clone https://github.com/asboyer/template.git my_project && cd my_project
+git clone https://github.com/asboyer/continuity-template.git my_project && cd my_project
 
 # 2. Initialize the cloned repository as your own project
 scripts/init_project.sh --project-name "My Project"
