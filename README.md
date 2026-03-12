@@ -15,8 +15,8 @@ It includes reusable template documents for:
 It now includes project-local prompt templates under `prompts/`, organized into:
 
 - `prompts/start`
-- `prompts/coding-prompts`
-- `prompts/business-prompts`
+- `prompts/coding_prompts`
+- `prompts/business_prompts`
 
 It also includes engineering starter scaffolding:
 

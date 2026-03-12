@@ -1,0 +1,9 @@
+config:
+  # Line length — disabled for template placeholder content
+  MD013: false
+  # Allow multiple top-level headings (each template file is standalone)
+  MD025: false
+  # Allow trailing punctuation in headings
+  MD026: false
+  # Allow inline HTML (used for comments in templates)
+  MD033: false

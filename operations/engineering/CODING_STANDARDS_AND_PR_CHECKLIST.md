@@ -84,6 +84,7 @@ Rule:
 
 ## 6) Branching and Audit Trail
 
+- Default branch: `master`
 - Create a dedicated branch for refactor/setup work
 - Commit incrementally, never one massive commit
 - Commit after each major milestone:
@@ -153,8 +154,9 @@ Every LLM/human contributor must verify:
 
 These standards should be referenced from:
 
-- `operations/engineering/LLM_HANDOFF_PROMPT_TEMPLATE.md`
-- `operations/engineering/CONTRIBUTING_WORKFLOW.md` (or equivalent)
+- `prompts/coding_prompts/LLM_HANDOFF_PROMPT_TEMPLATE.md`
+- `operations/engineering/CONTRIBUTING_WORKFLOW.md`
+- `CLAUDE.md` and `AGENTS.md`
 - PR templates/checklists
 
 This ensures standards are enforced from day one, not retrofitted later.

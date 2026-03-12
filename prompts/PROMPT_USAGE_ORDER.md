@@ -10,8 +10,8 @@ This initializes and/or validates the `operations/` knowledge system.
 
 ## 2) Coding sessions (every implementation session)
 
-1. `prompts/coding-prompts/LLM_HANDOFF_PROMPT_TEMPLATE.md`
-2. Optional: `prompts/coding-prompts/REFACTOR_SETUP_PROMPT_TEMPLATE.md`
+1. `prompts/coding_prompts/LLM_HANDOFF_PROMPT_TEMPLATE.md`
+2. Optional: `prompts/coding_prompts/REFACTOR_SETUP_PROMPT_TEMPLATE.md`
 
 These prompts require reading and updating:
 
@@ -24,9 +24,9 @@ These prompts require reading and updating:
 
 ## 3) Business/strategy sessions (periodic)
 
-1. `prompts/business-prompts/BUSINESS_PLAN_PROMPT_TEMPLATE.md`
-2. `prompts/business-prompts/ROADMAP_PLAN_PROMPT_TEMPLATE.md`
-3. `prompts/business-prompts/MARKETING_PLAN_PROMPT_TEMPLATE.md`
+1. `prompts/business_prompts/BUSINESS_PLAN_PROMPT_TEMPLATE.md`
+2. `prompts/business_prompts/ROADMAP_PLAN_PROMPT_TEMPLATE.md`
+3. `prompts/business_prompts/MARKETING_PLAN_PROMPT_TEMPLATE.md`
 
 Write outputs into:
 
