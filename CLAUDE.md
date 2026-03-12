@@ -40,7 +40,7 @@ Commands are stack-neutral. Configure via `LINT_CMD`, `FORMAT_CHECK_CMD`, `TEST_
 1. `operations/core/CORE_MISSION.md`
 2. `operations/core/MASTER_MEMORY.md`
 3. `operations/engineering/ROADMAP_PROGRESS.md`
-4. `operations/engineering/CODING_STANDARDS_AND_PR_CHECKLIST.md`
+4. `operations/engineering/ENGINEERING_STANDARDS.md`
 5. `operations/engineering/ARCHITECTURE_OVERVIEW.md`
 6. `operations/engineering/DECISIONS_LOG.md`
 
@@ -50,7 +50,7 @@ Commands are stack-neutral. Configure via `LINT_CMD`, `FORMAT_CHECK_CMD`, `TEST_
 - One idea per commit; clear scope and intent
 - Prefer stack-idiomatic naming and tooling, with explicit, readable code as the default style
 - PRs must include: summary, why, what changed, test plan, risks, follow-ups
-- Full standards: `operations/engineering/CODING_STANDARDS_AND_PR_CHECKLIST.md`
+- Full standards: `operations/engineering/ENGINEERING_STANDARDS.md`
 
 ## Source Precedence
 
@@ -70,7 +70,7 @@ Every `MASTER_MEMORY.md` session log entry must include:
 3. Add a concise Next Session Starter note
 
 For the first session in a new repository, also review
-`operations/engineering/BOOTSTRAP_COMPLETION_CHECKLIST.md` before declaring the
+`operations/engineering/BOOTSTRAP_CHECKLIST.md` before declaring the
 project ready for feature work.
 
 ## Boundaries

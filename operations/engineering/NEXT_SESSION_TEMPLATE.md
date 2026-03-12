@@ -1,11 +1,11 @@
-# Next Session Starter Template
+# Next Session Template
 
 ## Context to Read First
 
 1. `operations/core/CORE_MISSION.md`
 2. `operations/core/MASTER_MEMORY.md`
 3. `operations/engineering/ROADMAP_PROGRESS.md`
-4. `operations/engineering/CODING_STANDARDS_AND_PR_CHECKLIST.md`
+4. `operations/engineering/ENGINEERING_STANDARDS.md`
 
 ## Current Objective
 

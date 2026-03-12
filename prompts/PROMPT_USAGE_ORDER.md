@@ -8,7 +8,7 @@ Use prompts from this folder in the following order.
 
 This initializes and/or validates the `operations/` knowledge system.
 Bootstrap is not complete until
-`operations/engineering/BOOTSTRAP_COMPLETION_CHECKLIST.md` has been reviewed.
+`operations/engineering/BOOTSTRAP_CHECKLIST.md` has been reviewed.
 
 ## 2) Coding sessions (every implementation session)
 
@@ -27,7 +27,7 @@ These prompts require reading and updating:
 - `operations/core/CORE_MISSION.md`
 - `operations/core/MASTER_MEMORY.md`
 - `operations/engineering/ROADMAP_PROGRESS.md`
-- `operations/engineering/CODING_STANDARDS_AND_PR_CHECKLIST.md`
+- `operations/engineering/ENGINEERING_STANDARDS.md`
 - `operations/engineering/ARCHITECTURE_OVERVIEW.md`
 - `operations/engineering/DECISIONS_LOG.md`
 

@@ -4,7 +4,7 @@
 You are refactoring this codebase for maintainability and long-term scale.
 
 READ FIRST
-1) operations/engineering/CODING_STANDARDS_AND_PR_CHECKLIST.md
+1) operations/engineering/ENGINEERING_STANDARDS.md
 2) operations/engineering/ARCHITECTURE_OVERVIEW.md
 3) operations/core/MASTER_MEMORY.md
 4) operations/engineering/ROADMAP_PROGRESS.md
@@ -16,7 +16,7 @@ Rules:
 - Never ship one massive commit.
 
 Standards source of truth:
-- operations/engineering/CODING_STANDARDS_AND_PR_CHECKLIST.md
+- operations/engineering/ENGINEERING_STANDARDS.md
 
 FAILURE MODES
 - If no tests exist yet: write tests for current behavior BEFORE refactoring.

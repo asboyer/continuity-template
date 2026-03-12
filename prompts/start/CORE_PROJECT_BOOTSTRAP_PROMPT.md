@@ -34,25 +34,25 @@ high-quality content:
 1) operations/core/CORE_MISSION.md
 2) operations/core/MASTER_MEMORY.md
 3) operations/engineering/ROADMAP_PROGRESS.md
-4) operations/engineering/CODING_STANDARDS_AND_PR_CHECKLIST.md
+4) operations/engineering/ENGINEERING_STANDARDS.md
 5) operations/engineering/ARCHITECTURE_OVERVIEW.md
 6) operations/engineering/DECISIONS_LOG.md
 7) operations/engineering/CONTRIBUTING_WORKFLOW.md
 8) operations/business/BUSINESS_PLAN.md
 9) operations/business/MARKETING_PLAN.md
-10) operations/engineering/BOOTSTRAP_COMPLETION_CHECKLIST.md
+10) operations/engineering/BOOTSTRAP_CHECKLIST.md
 
 ## Context Priority
 Read and apply in order:
 1) operations/core/CORE_MISSION.md
 2) operations/core/MASTER_MEMORY.md
 3) operations/engineering/ROADMAP_PROGRESS.md
-4) operations/engineering/CODING_STANDARDS_AND_PR_CHECKLIST.md
+4) operations/engineering/ENGINEERING_STANDARDS.md
 5) operations/engineering/ARCHITECTURE_OVERVIEW.md
 6) operations/engineering/DECISIONS_LOG.md
 7) operations/business/BUSINESS_PLAN.md (if present)
 8) operations/business/MARKETING_PLAN.md (if present)
-9) operations/engineering/BOOTSTRAP_COMPLETION_CHECKLIST.md
+9) operations/engineering/BOOTSTRAP_CHECKLIST.md
 10) current codebase
 
 If sources conflict:

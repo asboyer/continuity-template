@@ -1,4 +1,4 @@
-# Coding Standards and PR Checklist
+# Engineering Standards
 
 Use this file as the default engineering contract for all contributors (human or
 LLM) from project inception.

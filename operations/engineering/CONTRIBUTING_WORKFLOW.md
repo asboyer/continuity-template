@@ -5,7 +5,7 @@
 1. Read `operations/core/CORE_MISSION.md`
 2. Read `operations/core/MASTER_MEMORY.md`
 3. Read `operations/engineering/ROADMAP_PROGRESS.md`
-4. Read `operations/engineering/CODING_STANDARDS_AND_PR_CHECKLIST.md`
+4. Read `operations/engineering/ENGINEERING_STANDARDS.md`
 
 ## Implementation Flow
 

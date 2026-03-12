@@ -204,7 +204,7 @@ Summary:
 Next steps:
 1. Review README.md and replace placeholder content.
 2. Run the bootstrap prompt in prompts/start/CORE_PROJECT_BOOTSTRAP_PROMPT.md.
-3. Complete operations/engineering/BOOTSTRAP_COMPLETION_CHECKLIST.md.
+3. Complete operations/engineering/BOOTSTRAP_CHECKLIST.md.
 EOF
 
 celebrate

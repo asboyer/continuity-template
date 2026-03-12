@@ -100,16 +100,16 @@ these files and ends by updating them.
 | `core/CORE_MISSION.md` | What the product does, why it exists, non-negotiable principles. This is the tie-breaker for all product decisions. | Rarely — only when the mission fundamentally changes. |
 | `core/MASTER_MEMORY.md` | The shared brain across all sessions. Contains project overview, architecture, current state, known issues, and a session log. | Every session — append a session log entry and update current state. |
 | `engineering/ROADMAP_PROGRESS.md` | The active milestone, what's shipped, what remains, and what's next. This is the execution handoff between sessions. | Every session — update status, remaining work, and next session note. |
-| `engineering/CODING_STANDARDS_AND_PR_CHECKLIST.md` | Naming conventions, commit format, PR requirements, and the LLM execution checklist. This is the engineering contract. | When standards evolve. Reference from day one. |
+| `engineering/ENGINEERING_STANDARDS.md` | Naming conventions, commit format, PR requirements, and the LLM execution checklist. This is the engineering contract. | When standards evolve. Reference from day one. |
 | `engineering/ARCHITECTURE_OVERVIEW.md` | System components, data flow, external dependencies, interfaces, and observability approach. | When architecture changes. |
 | `engineering/DECISIONS_LOG.md` | Table of major decisions with rationale and links to detailed records. | When a significant decision is made. |
 | `engineering/CONTRIBUTING_WORKFLOW.md` | Step-by-step workflow for any contributor: what to read, how to implement, how to close a session. | When workflow changes. |
-| `engineering/BOOTSTRAP_COMPLETION_CHECKLIST.md` | Required setup checklist for turning this template into a real project. | During initial setup and bootstrap audits. |
-| `engineering/NEXT_SESSION_STARTER_TEMPLATE.md` | Template for the "next session starter" note that closes every session. | Reference only — fill in a copy at end of each session. |
+| `engineering/BOOTSTRAP_CHECKLIST.md` | Required setup checklist for turning this template into a real project. | During initial setup and bootstrap audits. |
+| `engineering/NEXT_SESSION_TEMPLATE.md` | Template for the "next session starter" note that closes every session. | Reference only — fill in a copy at end of each session. |
 | `engineering/DECISION_RECORD_TEMPLATE.md` | Template for individual decision records. See `decisions/001_use_operations_scaffold.md` for a filled example. | Reference only — copy for each new decision. |
 | `engineering/ENV_SETUP_TEMPLATE.md` | Local development setup instructions: prerequisites, install steps, env vars, run commands. | When setup steps change. |
 | `engineering/PR_TEMPLATE.md` | Pull request description template with required sections. | Reference only — use when opening PRs. |
-| `engineering/RELEASE_CHANGELOG_TEMPLATE.md` | Changelog format for releases. | Reference only — copy for each release. |
+| `engineering/CHANGELOG_TEMPLATE.md` | Changelog format for releases. | Reference only — copy for each release. |
 | `engineering/INCIDENT_TEMPLATE.md` | Post-incident report template with timeline, root cause, and action items. | Reference only — copy for each incident. |
 | `engineering/decisions/` | Directory of individual decision records. | Add a new file for each major decision. |
 | `business/BUSINESS_PLAN.md` | Business plan: problem, market, model, financials, KPIs. | When business strategy changes. |
@@ -135,7 +135,7 @@ what to output.
 sequencing guide, decision rules, and session close requirements.
 
 Bootstrap is not complete until
-`operations/engineering/BOOTSTRAP_COMPLETION_CHECKLIST.md` has been reviewed.
+`operations/engineering/BOOTSTRAP_CHECKLIST.md` has been reviewed.
 
 ### Root Files
 
@@ -194,7 +194,7 @@ The generated project README is based on
    - `operations/core/CORE_MISSION.md`
    - `operations/core/MASTER_MEMORY.md`
    - `operations/engineering/ROADMAP_PROGRESS.md`
-   - `operations/engineering/CODING_STANDARDS_AND_PR_CHECKLIST.md`
+   - `operations/engineering/ENGINEERING_STANDARDS.md`
    - `operations/engineering/ARCHITECTURE_OVERVIEW.md`
    - `operations/engineering/DECISIONS_LOG.md`
 
@@ -268,7 +268,7 @@ To make the configuration permanent, edit the defaults at the top of the
   when turning this template into a real repository. The template keeps the
   workflow in `.template` form so it is explicit that activation is part of
   project setup.
-- **Review `operations/engineering/BOOTSTRAP_COMPLETION_CHECKLIST.md`** before
+- **Review `operations/engineering/BOOTSTRAP_CHECKLIST.md`** before
   declaring the project ready for feature work.
 - **Run `make init-check`** after bootstrap to verify all operations files
   are initialized with real content.
@@ -307,17 +307,17 @@ To make the configuration permanent, edit the defaults at the top of the
 │   │   └── MASTER_MEMORY.md           # Persistent project memory
 │   ├── engineering/
 │   │   ├── ROADMAP_PROGRESS.md        # Active milestone and status
-│   │   ├── CODING_STANDARDS_AND_PR_CHECKLIST.md
+│   │   ├── ENGINEERING_STANDARDS.md
 │   │   ├── ARCHITECTURE_OVERVIEW.md
 │   │   ├── CONTRIBUTING_WORKFLOW.md
 │   │   ├── DECISIONS_LOG.md
 │   │   ├── decisions/                 # Individual decision records
-│   │   ├── BOOTSTRAP_COMPLETION_CHECKLIST.md
+│   │   ├── BOOTSTRAP_CHECKLIST.md
 │   │   ├── DECISION_RECORD_TEMPLATE.md
 │   │   ├── ENV_SETUP_TEMPLATE.md
-│   │   ├── NEXT_SESSION_STARTER_TEMPLATE.md
+│   │   ├── NEXT_SESSION_TEMPLATE.md
 │   │   ├── PR_TEMPLATE.md
-│   │   ├── RELEASE_CHANGELOG_TEMPLATE.md
+│   │   ├── CHANGELOG_TEMPLATE.md
 │   │   └── INCIDENT_TEMPLATE.md
 │   └── business/
 │       ├── BUSINESS_PLAN.md

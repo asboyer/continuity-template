@@ -1,4 +1,4 @@
-# Bootstrap Completion Checklist
+# Bootstrap Checklist
 
 Use this checklist when turning this template into a real project. The project
 is not considered initialized until every required item below is complete.

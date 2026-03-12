@@ -34,7 +34,7 @@ REQUIRED_FILES = \
 	operations/core/CORE_MISSION.md \
 	operations/core/MASTER_MEMORY.md \
 	operations/engineering/ROADMAP_PROGRESS.md \
-	operations/engineering/CODING_STANDARDS_AND_PR_CHECKLIST.md \
+	operations/engineering/ENGINEERING_STANDARDS.md \
 	operations/engineering/ARCHITECTURE_OVERVIEW.md \
 	operations/engineering/DECISIONS_LOG.md \
 	operations/engineering/CONTRIBUTING_WORKFLOW.md

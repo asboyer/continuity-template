@@ -1,4 +1,4 @@
-# Release Changelog Template
+# Changelog Template
 
 ## Release: <version>
 
