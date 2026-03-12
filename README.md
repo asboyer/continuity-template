@@ -10,6 +10,50 @@ enforces standards automatically, and ensures nothing is lost between sessions.
 
 ---
 
+## About
+
+Written by **asboyer**.
+
+Most project templates solve the wrong problem. They give you a folder
+structure and a linter config, then leave you on your own. That works fine
+when a human is holding the full picture in their head — but the moment you
+bring an AI coding agent into the loop, it falls apart. The agent has no
+memory of what happened last session. It doesn't know your conventions unless
+you tell it every time. It doesn't know what milestone you're working toward,
+what decisions were already made, or what the product even is. So it guesses,
+and the guesses drift, and you spend more time correcting the AI than you save
+by using it.
+
+This template exists because the problem isn't scaffolding — it's continuity.
+
+What makes it different:
+
+- **Persistent memory across sessions.** `MASTER_MEMORY.md` is a shared brain
+  that every session reads at the start and updates at the end. Nothing is lost.
+- **Structured handoff, not hope.** Every session closes with a specific next
+  session starter note. The next agent — human or AI — picks up exactly where
+  the last one left off.
+- **Standards that enforce themselves.** Coding conventions, commit formats, and
+  PR requirements aren't suggestions in a wiki. They're loaded into the AI
+  tool automatically via `CLAUDE.md` and `AGENTS.md`, enforced by pre-commit
+  hooks, and verified in CI.
+- **A prompt system, not a single prompt.** Bootstrap, implementation, refactor,
+  health check, business planning, roadmap — each session type has a purpose-
+  built prompt with failure modes, validation rules, and explicit boundaries.
+- **Stack-neutral by design.** No language assumptions. The bootstrap prompt
+  asks what you're building with and configures the tooling for you. Python,
+  Node, Go, Rust, whatever — the governance layer is the same.
+- **Built for how AI tools actually work.** `CLAUDE.md` and `AGENTS.md` are
+  auto-loaded by Claude Code, Cursor, and GitHub Copilot. The session read
+  order, source precedence rules, and boundary constraints are picked up
+  automatically. You don't paste prompts — you just start working.
+
+The goal is simple: copy this template, run the bootstrap, and have a project
+where every session — first or fiftieth — starts with full context and ends
+with a clean handoff.
+
+---
+
 ## Quick Start
 
 ```bash

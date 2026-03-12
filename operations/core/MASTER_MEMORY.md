@@ -36,7 +36,7 @@
 ## Next Steps
 <!-- Prioritized list of what needs to happen next -->
 
-1. 
+1.
 
 ## Collaboration Style To Carry Forward
 
