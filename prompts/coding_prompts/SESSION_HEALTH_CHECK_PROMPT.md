@@ -33,7 +33,7 @@ OUTPUT
 2) For each file: status (OK / stale / incomplete / inconsistent) + specific issue
 3) Cross-file inconsistencies found
 4) Recommended fixes (ordered by priority)
-5) Session log entry summarizing this health check
+5) Proposed session log entry summarizing this health check
 
 DO NOT
 - Do NOT modify any file during a health check — report only

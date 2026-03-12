@@ -48,6 +48,7 @@ Commands are stack-neutral. Configure via `LINT_CMD`, `FORMAT_CHECK_CMD`, `TEST_
 
 - Conventional Commits: `feat:`, `fix:`, `refactor:`, `docs:`, `test:`, `chore:`, `ci:`
 - One idea per commit; clear scope and intent
+- Prefer stack-idiomatic naming and tooling, with explicit, readable code as the default style
 - PRs must include: summary, why, what changed, test plan, risks, follow-ups
 - Full standards: `operations/engineering/CODING_STANDARDS_AND_PR_CHECKLIST.md`
 
@@ -67,6 +68,10 @@ Every `MASTER_MEMORY.md` session log entry must include:
 1. Update `operations/core/MASTER_MEMORY.md` (session log entry per schema above)
 2. Update `operations/engineering/ROADMAP_PROGRESS.md` (status + next)
 3. Add a concise Next Session Starter note
+
+For the first session in a new repository, also review
+`operations/engineering/BOOTSTRAP_COMPLETION_CHECKLIST.md` before declaring the
+project ready for feature work.
 
 ## Boundaries
 

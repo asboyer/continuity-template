@@ -44,8 +44,10 @@ init-check:
 	for f in $(REQUIRED_FILES); do \
 		if [ ! -f "$$f" ]; then \
 			echo "MISSING: $$f"; status=1; \
-		elif grep -q '<.*>' "$$f" && ! grep -q '^#' "$$f" | grep -qv '<'; then \
-			echo "PLACEHOLDER-ONLY: $$f"; status=1; \
+		elif grep -Eq '<[^>]+>' "$$f"; then \
+			if ! grep -Ev '^[[:space:]]*(#|<!--|---|```|[|]|[-: ]*$$)' "$$f" | grep -Eqv '<[^>]+>'; then \
+				echo "PLACEHOLDER-ONLY: $$f"; status=1; \
+			fi; \
 		fi; \
 	done; \
 	if [ $$status -eq 0 ]; then echo "All operations files initialized."; fi; \

@@ -15,23 +15,37 @@ We optimize for:
 - safe refactoring,
 - high-signal pull requests.
 
+Default engineering posture:
+
+- prefer boring, well-understood patterns over novelty,
+- favor explicitness over clever abstraction,
+- keep code and docs easy for a fresh LLM or developer to continue,
+- choose conventions that are idiomatic for the active stack, not forced across stacks.
+
 ---
 
 ## 2) Naming and Structure Conventions
 
 ### Naming
 
-- Variables: `snake_case`
-- Functions: `snake_case`
-- Python modules/files: lowercase `snake_case`
-- Prefer underscores (`_`) over dashes (`-`) in file names
-- Directory names: lowercase only
+- Follow the dominant naming conventions of the active language/framework
+- Keep names descriptive and stable across layers
+- Prefer consistency within a module over personal style preferences
+- Use lowercase directory names unless the stack has a strong competing convention
+
+Preferred defaults when the stack allows flexibility:
+
+- Variables/functions/modules: `snake_case`
+- File names: lowercase with separators that match stack norms
+- Public type/class names: `PascalCase`
+- Constants: `UPPER_SNAKE_CASE`
 
 ### Project structure
 
 - Organize code by feature/domain, not by one giant file
 - Avoid monolithic modules
 - Keep responsibilities separated
+- Keep the top-level layout simple enough that a new contributor can navigate it quickly
 
 ---
 
@@ -40,7 +54,13 @@ We optimize for:
 - Indentation: 4 spaces (no tabs)
 - Use language-appropriate auto-formatters
 - Use markdown linting for all docs
-- Use Python linting for Python code
+- Use the primary linter for the active stack
+
+Preferred defaults:
+
+- 4-space indentation for most source and documentation files
+- Tabs only where required by tooling, such as Makefiles
+- One formatter and one linter should be the source of truth for each language
 
 Enforcement policy:
 
@@ -64,8 +84,9 @@ Required behaviors:
 
 Documentation inside code:
 
-- Add function docstrings/comments at function start
-- Document inputs, outputs, side effects, and assumptions
+- Document public interfaces, non-obvious behavior, side effects, and assumptions
+- Add comments only where intent is not obvious from the code itself
+- Prefer concise module- or function-level documentation over noisy inline commentary
 
 ---
 
@@ -75,6 +96,7 @@ Documentation inside code:
 - Run full test suite after each major refactor step
 - Do not proceed if tests fail
 - CI must run tests on every PR
+- Add integration or end-to-end coverage where unit tests alone do not protect behavior
 
 Rule:
 
@@ -87,12 +109,8 @@ Rule:
 - Default branch: `master`
 - Create a dedicated branch for refactor/setup work
 - Commit incrementally, never one massive commit
-- Commit after each major milestone:
-  - folder restructure
-  - each extracted module
-  - tests added/updated
-  - lint/formatter setup
-  - docs updates
+- Commit after each major milestone: structure change, extracted module, tests,
+  tooling setup, or documentation update
 
 ---
 
@@ -134,6 +152,7 @@ PR quality rules:
 - Keep PRs focused and reviewable
 - Do not bundle unrelated work
 - Ensure CI is green before review
+- Include enough context that a reviewer can validate intent without digging through chat history
 
 ---
 

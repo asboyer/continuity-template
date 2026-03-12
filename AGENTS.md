@@ -32,6 +32,7 @@ Configure for your stack: `make check LINT_CMD="npm run lint" TEST_CMD="npm test
 
 - Conventional Commits (`feat:`, `fix:`, `refactor:`, `docs:`, `test:`, `chore:`)
 - One idea per commit with clear scope
+- Prefer stack-idiomatic naming/tooling with explicit, readable code
 - PR descriptions: summary, why, what changed, test plan, risks, follow-ups
 - Full standards: `operations/engineering/CODING_STANDARDS_AND_PR_CHECKLIST.md`
 
@@ -39,10 +40,11 @@ Configure for your stack: `make check LINT_CMD="npm run lint" TEST_CMD="npm test
 
 1. Read `operations/core/CORE_MISSION.md` and `MASTER_MEMORY.md`
 2. Read `operations/engineering/ROADMAP_PROGRESS.md`
-3. Implement highest-priority scoped task
-4. Validate (lint/tests/manual checks)
-5. Update `MASTER_MEMORY.md` and `ROADMAP_PROGRESS.md`
-6. End with a Next Session Starter note
+3. For first-session bootstrap, review `operations/engineering/BOOTSTRAP_COMPLETION_CHECKLIST.md`
+4. Implement highest-priority scoped task
+5. Validate (lint/tests/manual checks)
+6. Update `MASTER_MEMORY.md` and `ROADMAP_PROGRESS.md`
+7. End with a Next Session Starter note
 
 ## Boundaries
 

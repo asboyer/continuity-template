@@ -7,6 +7,9 @@ repos:
       - id: check-yaml
       - id: check-json
       - id: check-merge-conflict
+      - id: check-added-large-files
+      - id: detect-private-key
+      - id: check-case-conflict
 # Optional: add language-specific hooks below (examples)
 #
 # - repo: https://github.com/astral-sh/ruff-pre-commit

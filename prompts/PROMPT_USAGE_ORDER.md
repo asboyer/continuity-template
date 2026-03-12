@@ -7,6 +7,8 @@ Use prompts from this folder in the following order.
 1. `prompts/start/CORE_PROJECT_BOOTSTRAP_PROMPT.md`
 
 This initializes and/or validates the `operations/` knowledge system.
+Bootstrap is not complete until
+`operations/engineering/BOOTSTRAP_COMPLETION_CHECKLIST.md` has been reviewed.
 
 ## 2) Coding sessions (every implementation session)
 
