@@ -175,6 +175,43 @@ They wrap the prompts above so you never have to paste anything manually.
 /close-session
 ```
 
+### `.claude/skills/` — Reusable Workflow Skills
+
+Skills are structured, multi-step workflows the AI follows for recurring tasks.
+Unlike slash commands (which handle session lifecycle), skills handle domain
+work: adding features, making architecture decisions, brainstorming, and
+updating business strategy. Each skill loads the right context, enforces
+constraints, confirms before writing, and updates all relevant ops docs in one
+pass.
+
+The template ships with four project-agnostic skills:
+
+| Skill             | When to Use                                                                 | What It Does                                                                                                                                                                            |
+| ----------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `add-feature`     | When the user has a specific feature to scope and track                     | Aligns the feature against CORE_MISSION, scopes it to a milestone, updates `ROADMAP_PROGRESS.md`, and optionally `BUSINESS_PLAN.md` / `MARKETING_PLAN.md`.                              |
+| `arch-decision`   | When evaluating a tech tradeoff or making a stack choice                    | Structures the discussion, compares alternatives against mission and locked decisions, writes a decision file, and updates `DECISIONS_LOG.md` and `ARCHITECTURE_OVERVIEW.md`.           |
+| `brainstorm`      | When exploring ideas without committing to anything yet                     | Loads all ops context, facilitates open ideation grounded in the mission and roadmap, then offers to hand off to `/add-feature` or `/arch-decision`. Read-only until the user confirms. |
+| `business-update` | When updating pricing, positioning, audience segments, or campaign strategy | Loads `BUSINESS_PLAN.md` and `MARKETING_PLAN.md`, scopes the change, diffs current vs. proposed, confirms before writing, and logs to `MASTER_MEMORY.md`.                               |
+
+**Usage in Claude Code:**
+
+```
+/add-feature
+```
+
+```
+/brainstorm
+```
+
+**During bootstrap**, create a project-specific skill for any complex core
+domain — a payment flow, a scoring system, a data pipeline. Encode its
+non-negotiable constraints once so they don't have to be re-explained every
+session. Place it at `.claude/skills/<domain>/SKILL.md`.
+
+**The `rules-updater` agent** (run by `/close-session`) will automatically
+route session learnings back to the relevant skill file when a domain-specific
+skill exists for the topic.
+
 ### Root Files
 
 | File                                | Purpose                                                                                                                                                                                                                                                                        |
@@ -183,7 +220,8 @@ They wrap the prompts above so you never have to paste anything manually.
 | `AGENTS.md`                         | Auto-loaded by Cursor, GitHub Copilot, and other agents. Mirrors CLAUDE.md format. Also kept lean — points to `.claude/rules/` for details.                                                                                                                                    |
 | `.claude/commands/`                 | Project-level slash commands for Claude Code. `/bootstrap` — idea to initialized project. `/start-session` — read context and identify task. `/close-session` — write session log and update handoff docs.                                                                     |
 | `.claude/rules/`                    | Modular rule files loaded by Claude Code based on context. `session.md` — read order and log schema. `git.md` — commit/PR standards. `boundaries.md` — hard limits. `code-style.md` — language/framework conventions. Add project-specific rules (e.g., `data-model.md`) here. |
-| `.claude/agents/`                   | Custom subagent definitions (`.md` files). Each agent has a name, description, allowed tools, and a domain-specific checklist. Ships with `rules-updater` — syncs session learnings back to `.claude/rules/`.                                                                  |
+| `.claude/skills/`                   | Structured workflow skills for recurring domain tasks. Ships with `add-feature`, `arch-decision`, `brainstorm`, and `business-update`. Add project-specific skills (e.g., for a core domain like payments or a scoring system) during bootstrap.                               |
+| `.claude/agents/`                   | Custom subagent definitions (`.md` files). Each agent has a name, description, allowed tools, and a domain-specific checklist. Ships with `rules-updater` — syncs session learnings back to `.claude/rules/` and `.claude/skills/`.                                            |
 | `.claude/settings.json`             | Project-level Claude Code config: PostToolUse hooks (e.g., Prettier auto-format on every file write), permission deny rules for secrets.                                                                                                                                       |
 | `.worktreeinclude`                  | List of files (e.g., `.env`) to copy into worktrees created by `claude --worktree`. Ensures credentials are available in isolated branches.                                                                                                                                    |
 | `Makefile`                          | Stack-neutral build targets: `lint`, `format-check`, `test`, `check`, `init-check`. Configure via `LINT_CMD`, `FORMAT_CHECK_CMD`, `TEST_CMD`.                                                                                                                                  |
@@ -348,8 +386,13 @@ To make the configuration permanent, edit the defaults at the top of the
 │   │   ├── git.md                     # Commit conventions and PR standards
 │   │   ├── boundaries.md              # Hard limits (never modify, never commit)
 │   │   └── code-style.md              # Language/framework conventions (replace during bootstrap)
+│   ├── skills/
+│   │   ├── add-feature/SKILL.md       # Scope a feature and update roadmap + business docs
+│   │   ├── arch-decision/SKILL.md     # Evaluate a tradeoff and record the decision
+│   │   ├── brainstorm/SKILL.md        # Read-only ideation grounded in ops context
+│   │   └── business-update/SKILL.md   # Update business and marketing plan docs
 │   └── agents/
-│       └── rules-updater.md           # Syncs session learnings back to rules files
+│       └── rules-updater.md           # Syncs session learnings back to rules and skill files
 ├── .github/
 │   ├── workflows/ci.yml.template      # CI pipeline (rename to ci.yml after bootstrap)
 │   ├── dependabot.yml                 # Dependency updates
