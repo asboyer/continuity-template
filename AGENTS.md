@@ -29,12 +29,15 @@ All rules live in `.claude/rules/`:
 - `boundaries.md` — hard limits (mission, memory, secrets)
 - `code-style.md` — language/framework conventions
 
-Reusable workflow skills live in `.claude/skills/`:
+Reusable workflow skills live in `.claude/skills/` (Claude Code) and `.agents/skills/` (all tools):
 
 - `add-feature/` — scope a feature against the mission and roadmap
 - `arch-decision/` — evaluate a tech tradeoff and record the decision
 - `brainstorm/` — read-only ideation grounded in all ops context
 - `business-update/` — update business and marketing plan docs
+- `start-session/` — load context, verify repo state, produce a session brief
+- `close-session/` — commit, update ops docs, consistency check, run rules-updater
+- `rules-updater/` — extract session learnings and write back to rules/skill files
 
 Operations context: `operations/` (mission, memory, roadmap, decisions).
 

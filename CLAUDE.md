@@ -35,5 +35,7 @@ Reusable workflow skills live in `.claude/skills/`:
 - `brainstorm/` — read-only ideation grounded in all ops context
 - `business-update/` — update business and marketing plan docs
 
+Cross-tool mirrors (Codex, Copilot, etc.) plus session lifecycle skills live in `.agents/skills/`.
+
 Operations context: `operations/` (mission, memory, roadmap, decisions).
 Session commands: `/bootstrap` · `/start-session` · `/close-session`.
