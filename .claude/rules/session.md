@@ -17,6 +17,22 @@ Read these files in order before doing anything else:
 
 Or use `/start-session` to automate this.
 
+## Session Start — Branching Check
+
+After reading context, before writing any code, ask:
+
+> "Is this session a feature, fix, or non-trivial change?"
+
+- **Yes** → create a branch and confirm it with the user before doing anything else:
+  ```bash
+  git checkout -b feat/<name>   # or fix/<name>, chore/<name>
+  ```
+  All work goes on the branch. Session ends with a PR, not a direct push to master.
+
+- **No** (docs-only, ops files, config tweaks, hotfixes) → committing to master is acceptable, but confirm with the user if unsure.
+
+Never start writing code on master and migrate to a branch mid-session.
+
 ## Session Log Entry Schema
 
 Every entry in `MASTER_MEMORY.md` must include:
