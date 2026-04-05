@@ -38,7 +38,6 @@ Reusable workflow skills live in `.claude/skills/` (Claude Code) and `.agents/sk
 - `start-session/` — load context, verify repo state, produce a session brief
 - `close-session/` — commit, update ops docs, consistency check, run rules-updater
 - `rules-updater/` — extract session learnings and write back to rules/skill files
-- `web-design-guidelines/` — UI review against Vercel Web Interface Guidelines
 
 Operations context: `operations/` (mission, memory, roadmap, decisions).
 

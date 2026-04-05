@@ -219,16 +219,15 @@ compatible with non-Claude AI tools — GitHub Copilot, Codex, and any tool that
 reads the `AGENTS.md` standard. Skills here follow the same `SKILL.md`
 convention and contain the same structured workflows.
 
-| Skill                   | Purpose                                                                           |
-| ----------------------- | --------------------------------------------------------------------------------- |
-| `add-feature`           | Scope a feature against the mission and roadmap (mirror of `.claude/skills/`)     |
-| `arch-decision`         | Evaluate a tech tradeoff and record the decision (mirror)                         |
-| `brainstorm`            | Read-only ideation grounded in ops context (mirror)                               |
-| `business-update`       | Update business and marketing plan docs (mirror)                                  |
-| `start-session`         | Load all context, verify repo state, and produce a session brief                  |
-| `close-session`         | Commit, update ops docs, run consistency check, and trigger rules-updater         |
-| `rules-updater`         | Extract session learnings and write them back to the appropriate rules/skill file |
-| `web-design-guidelines` | Fetch and apply Vercel's Web Interface Guidelines to any UI file                  |
+| Skill             | Purpose                                                                           |
+| ----------------- | --------------------------------------------------------------------------------- |
+| `add-feature`     | Scope a feature against the mission and roadmap (mirror of `.claude/skills/`)     |
+| `arch-decision`   | Evaluate a tech tradeoff and record the decision (mirror)                         |
+| `brainstorm`      | Read-only ideation grounded in ops context (mirror)                               |
+| `business-update` | Update business and marketing plan docs (mirror)                                  |
+| `start-session`   | Load all context, verify repo state, and produce a session brief                  |
+| `close-session`   | Commit, update ops docs, run consistency check, and trigger rules-updater         |
+| `rules-updater`   | Extract session learnings and write them back to the appropriate rules/skill file |
 
 Project-specific skills (e.g., a payment flow or scoring system) can be added
 to `.agents/skills/<domain>/SKILL.md` alongside the generic ones.
@@ -243,7 +242,7 @@ to `.agents/skills/<domain>/SKILL.md` alongside the generic ones.
 | `.claude/rules/`                    | Modular rule files loaded by Claude Code based on context. `session.md` — read order and log schema. `git.md` — commit/PR standards. `boundaries.md` — hard limits. `code-style.md` — language/framework conventions. Add project-specific rules (e.g., `data-model.md`) here. |
 | `.claude/skills/`                   | Structured workflow skills for recurring domain tasks. Ships with `add-feature`, `arch-decision`, `brainstorm`, and `business-update`. Add project-specific skills (e.g., for a core domain like payments or a scoring system) during bootstrap.                               |
 | `.claude/agents/`                   | Custom subagent definitions (`.md` files). Each agent has a name, description, allowed tools, and a domain-specific checklist. Ships with `rules-updater` — syncs session learnings back to `.claude/rules/` and `.claude/skills/`.                                            |
-| `.agents/skills/`                   | Cross-tool workflow skills for Codex, GitHub Copilot, and any `AGENTS.md`-compatible tool. Mirrors `.claude/skills/` and adds session lifecycle skills (`start-session`, `close-session`, `rules-updater`) and `web-design-guidelines`.                                        |
+| `.agents/skills/`                   | Cross-tool workflow skills for Codex, GitHub Copilot, and any `AGENTS.md`-compatible tool. Mirrors `.claude/skills/` and adds session lifecycle skills: `start-session`, `close-session`, and `rules-updater`.                                                                 |
 | `.claude/settings.json`             | Project-level Claude Code config: PostToolUse hooks (e.g., Prettier auto-format on every file write), permission deny rules for secrets.                                                                                                                                       |
 | `.worktreeinclude`                  | List of files (e.g., `.env`) to copy into worktrees created by `claude --worktree`. Ensures credentials are available in isolated branches.                                                                                                                                    |
 | `Makefile`                          | Stack-neutral build targets: `lint`, `format-check`, `test`, `check`, `init-check`. Configure via `LINT_CMD`, `FORMAT_CHECK_CMD`, `TEST_CMD`.                                                                                                                                  |
@@ -423,8 +422,7 @@ To make the configuration permanent, edit the defaults at the top of the
 │       ├── business-update/SKILL.md   # Mirror of .claude/skills/business-update (cross-tool)
 │       ├── start-session/SKILL.md     # Load context, verify state, produce session brief
 │       ├── close-session/SKILL.md     # Commit, update ops docs, run consistency check
-│       ├── rules-updater/SKILL.md     # Extract learnings and write back to rules/skill files
-│       └── web-design-guidelines/SKILL.md  # UI review against Vercel Web Interface Guidelines
+│       └── rules-updater/SKILL.md     # Extract learnings and write back to rules/skill files
 ├── .github/
 │   ├── workflows/ci.yml.template      # CI pipeline (rename to ci.yml after bootstrap)
 │   ├── dependabot.yml                 # Dependency updates
