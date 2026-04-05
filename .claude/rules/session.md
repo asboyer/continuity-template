@@ -62,6 +62,7 @@ For any session during the initial bootstrap phase, also review
 
 - Status docs (`BOOTSTRAP_CHECKLIST.md`, `MASTER_MEMORY.md`, `ROADMAP_PROGRESS.md`) drift silently — audit them against actual repo state at the start of any continuity or cleanup session rather than trusting their checked boxes. `# discovered 2026-04-05`
 - Any file that claims to be "the authoritative source" for session workflow but is not an agent-loaded rules file (i.e., not in `.claude/rules/`) will diverge; keep those files as thin pointers to the rules file, not content owners. `# discovered 2026-04-05`
+- When an architectural decision changes the data model (e.g., which column a FK points to), all `.claude/skills/` files that reference that model must be updated in the same session — skill files can encode stale constraints that silently produce wrong code. `# discovered 2026-04-05`
 
 ## Hook vs. Instruction Enforcement
 
