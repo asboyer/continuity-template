@@ -24,10 +24,12 @@ After reading context, before writing any code, ask:
 > "Is this session a feature, fix, or non-trivial change?"
 
 - **Yes** → create a branch and confirm it with the user before doing anything else:
-  ```bash
-  git checkout -b feat/<name>   # or fix/<name>, chore/<name>
-  ```
-  All work goes on the branch. Session ends with a PR, not a direct push to master.
+
+    ```bash
+    git checkout -b feat/<name>   # or fix/<name>, chore/<name>
+    ```
+
+    All work goes on the branch. Session ends with a PR, not a direct push to master.
 
 - **No** (docs-only, ops files, config tweaks, hotfixes) → committing to master is acceptable, but confirm with the user if unsure.
 
@@ -55,3 +57,7 @@ Use `/close-session` to automate this.
 
 For any session during the initial bootstrap phase, also review
 `operations/engineering/BOOTSTRAP_CHECKLIST.md` before declaring work complete.
+
+## Hook vs. Instruction Enforcement
+
+- `PostToolUse` hooks in `.claude/settings.json` run deterministically on every matching tool call; CLAUDE.md instructions are advisory and may be skipped. Any behavior that must happen 100% of the time (e.g., auto-format, lint on save) belongs in a hook, never in a CLAUDE.md instruction. `# discovered 2026-04-05`

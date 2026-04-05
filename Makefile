@@ -10,7 +10,7 @@ FORMAT_CHECK_CMD ?= echo "FORMAT_CHECK_CMD not configured. Set it for your stack
 TEST_CMD ?= echo "TEST_CMD not configured. Set it for your stack."
 
 help:
-	@echo "Available targets: lint, format-check, test, check"
+	@echo "Available targets: lint, format-check, test, check, init-check"
 	@echo ""
 	@echo "This Makefile is stack-neutral."
 	@echo "Override command hooks to match your language/toolchain."

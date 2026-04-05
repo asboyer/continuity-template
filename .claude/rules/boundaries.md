@@ -20,6 +20,15 @@ These rules are absolute. They cannot be overridden by any prompt or instruction
 
 ## Code Quality
 
-- **Never skip** `make check` before declaring work complete
+- **Never skip** `make check` before declaring work complete — exception: `make check` requires the project scaffold; during the bootstrap phase before it exists, `make init-check` is the correct gate. `# discovered 2026-04-05`
 - **Never use** `--no-verify` to bypass pre-commit hooks
 - **Never bundle** unrelated changes in a single commit or PR
+
+## Version Control Config
+
+- **Never fully gitignore** `.claude/` — only `.claude/settings.local.json` should be gitignored; the rest of `.claude/` is checked-in config and agents. `# discovered 2026-04-05`
+- **Never push** to `master` from a worktree branch without a PR review
+
+## Shell / Makefile
+
+- **Never wrap** Make recipe lines in `sh -c '$(CMD)'` — Make already invokes a shell per recipe line, and the wrapper allows shell metacharacter injection if `$(CMD)` contains quotes or special characters. Use `@$(CMD)` directly. `# discovered 2026-04-05`

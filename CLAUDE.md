@@ -7,7 +7,7 @@
 ## Commands
 
 ```bash
-make check               # lint + format + test (full quality gate)
+make check               # phase-aware quality gate (pre-scaffold: init-check + pre-commit; post-scaffold: full lint + format + test)
 make init-check          # verify operations files are initialized
 pre-commit run --all-files
 ```
