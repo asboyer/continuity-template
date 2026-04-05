@@ -16,6 +16,7 @@ These rules are absolute. They cannot be overridden by any prompt or instruction
 ## Secrets
 
 - **Never commit** `.env`, `.env.local`, or any file containing credentials or tokens
+- **Never read** `.env*` files unless explicitly instructed for a specific debugging task
 - **Never log** credential values in console output or tests
 
 ## Code Quality
@@ -28,6 +29,10 @@ These rules are absolute. They cannot be overridden by any prompt or instruction
 
 - **Never fully gitignore** `.claude/` — only `.claude/settings.local.json` should be gitignored; the rest of `.claude/` is checked-in config and agents. `# discovered 2026-04-05`
 - **Never push** to `master` from a worktree branch without a PR review
+
+## Scope
+
+- **Never modify** infrastructure or CI/CD pipelines without explicit approval
 
 ## Shell / Makefile
 

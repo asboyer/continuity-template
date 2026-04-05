@@ -52,6 +52,7 @@ Never skip this. Never use `--no-verify`.
 
 - All hook configuration in `.pre-commit-config.yaml` must be nested under the correct `repos` → `hooks` → entry; a stray top-level YAML key (e.g., `args:` outside a hook block) causes a silent parse error that breaks every commit. `# discovered 2026-04-05`
 - The `trailing-whitespace` hook catches spaces in shell script strings and heredocs. Strip with `perl -i -pe 's/[ \t]+$//'`; macOS `sed -i ''` with `s/[[:space:]]*$//` does not catch all cases reliably. `# discovered 2026-04-05`
+- File-mutating hooks (`end-of-file-fixer`, `trailing-whitespace`) will modify vendored or third-party content in directories like `.agents/` unless those paths are explicitly excluded via `exclude:` in `.pre-commit-config.yaml`. `# discovered 2026-04-05`
 
 ## Push / Sync
 
