@@ -19,7 +19,9 @@ Read in order:
 1. `operations/core/CORE_MISSION.md`
 2. `operations/core/MASTER_MEMORY.md`
 3. `operations/engineering/ROADMAP_PROGRESS.md`
-4. `operations/engineering/DECISIONS_LOG.md`
+4. `operations/engineering/ENGINEERING_STANDARDS.md`
+5. `operations/engineering/ARCHITECTURE_OVERVIEW.md`
+6. `operations/engineering/DECISIONS_LOG.md`
 
 ## Rules & Conventions
 

@@ -29,4 +29,4 @@ Detailed rules live in `.claude/rules/`:
 - `code-style.md` — language and framework conventions
 
 Operations context: `operations/` (mission, memory, roadmap, decisions).
-Session commands: `/start-session` · `/close-session`.
+Session commands: `/bootstrap` · `/start-session` · `/close-session`.
