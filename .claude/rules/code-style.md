@@ -12,7 +12,7 @@ description: Code style and conventions. Replace with stack-specific rules durin
 - Prefer explicit, readable code over clever one-liners
 - One responsibility per function; one concept per file
 - No dead code committed — remove rather than comment out
-- Names should describe what something *is* or *does*, not how it's implemented
+- Names should describe what something _is_ or _does_, not how it's implemented
 
 ## Error Handling
 

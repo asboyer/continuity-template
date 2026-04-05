@@ -3,7 +3,7 @@ name: Tech debt
 about: Track refactor/maintenance work
 title: "[TechDebt] "
 labels: tech-debt
-assignees: ''
+assignees: ""
 ---
 
 ## Debt Description

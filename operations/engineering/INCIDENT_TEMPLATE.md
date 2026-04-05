@@ -13,12 +13,12 @@
 
 ## Timeline
 
-| Time | Event |
-|------|-------|
-|      | Issue first observed |
-|      | Investigation started |
-|      | Root cause identified |
-|      | Mitigation applied |
+| Time | Event                     |
+| ---- | ------------------------- |
+|      | Issue first observed      |
+|      | Investigation started     |
+|      | Root cause identified     |
+|      | Mitigation applied        |
 |      | Full resolution confirmed |
 
 ## Root Cause
@@ -38,7 +38,7 @@
 ## Action Items
 
 | Action | Owner | Deadline | Status |
-|--------|-------|----------|--------|
+| ------ | ----- | -------- | ------ |
 |        |       |          |        |
 
 ## Lessons Learned
