@@ -1,4 +1,8 @@
-Close this session by updating the three continuity files.
+Close this session by committing work and updating the continuity files.
+
+## 0. Commit Changes
+
+Commit all changes made this session following the project's commit conventions. If the work warrants a PR, create one with a detailed description. If issues were uncovered, file them.
 
 ## 1. Session Log — `operations/core/MASTER_MEMORY.md`
 
@@ -21,16 +25,9 @@ Update:
 - Any new risks or blockers
 - Next session starter note (copy from the session log next step)
 
-## 3. Rules Sync (optional)
+## 3. Rules Sync
 
-If any new constraints, patterns, or failure modes were discovered this session that aren't already in `.claude/rules/`, add them to the appropriate rules file. Route:
-
-- Language/framework patterns → `code-style.md`
-- Git or PR process → `git.md`
-- Hard limits → `boundaries.md`
-- Session workflow changes → `session.md`
-
-If nothing new was learned, skip this step.
+Run the `rules-updater` agent to capture any patterns, constraints, or failure modes discovered this session and write them back to `.claude/rules/` or `.claude/skills/`. If nothing new was learned, it will say so — that is fine.
 
 ## Output
 
