@@ -1,41 +1,85 @@
-Close this session by committing work and updating the continuity files.
+You are closing a work session. Follow these steps exactly and in order.
 
-## 0. Commit Changes
+## Step 0 — Establish ground truth
 
-Commit all changes made this session following the project's commit conventions. If the work warrants a PR, create one with a detailed description. If issues were uncovered, file them.
+Before updating any docs, verify what is actually true:
 
-## 1. Session Log — `operations/core/MASTER_MEMORY.md`
+- Run `make check` and note whether it passes
+- Read `operations/engineering/BOOTSTRAP_CHECKLIST.md` — go through every
+  unchecked item and verify against actual repo state whether it is now done
+- List every file you changed this session
+- Summarize in one sentence what was completed, what is partial, and what is blocked
 
-Append a new session log entry with:
+Do not skip this step. Every status doc update depends on it being accurate.
 
-- **Date**: today's date (YYYY-MM-DD)
-- **Objective**: what was pursued this session
-- **Outcome**: completed / partial / blocked
-- **Key decisions**: any choices made or locked (write "none" if none)
-- **Next step**: the first concrete action for the next session
+## Step 1 — Commit all changes
 
-Do NOT delete or modify any existing log entries.
+Commit everything changed this session using conventional commit conventions.
+Group into logical commits — one idea per commit.
 
-## 2. Status Update — `operations/engineering/ROADMAP_PROGRESS.md`
+If the work warrants a PR (feature, non-trivial fix), create one with a full
+description per `operations/engineering/PR_TEMPLATE.md`.
 
-Update:
+If issues were uncovered, file them as GitHub issues.
 
-- What shipped this session
-- What remains in the current milestone
-- Any new risks or blockers
-- Next session starter note (copy from the session log next step)
+## Step 2 — Update BOOTSTRAP_CHECKLIST.md
 
-## 3. Rules Sync
+Re-read `operations/engineering/BOOTSTRAP_CHECKLIST.md`.
 
-Run the `rules-updater` agent to capture any patterns, constraints, or failure modes discovered this session and write them back to `.claude/rules/` or `.claude/skills/`. If nothing new was learned, it will say so — that is fine.
+For every unchecked item: if you verified in Step 0 that it is done, check it
+off. Do not check off anything you did not explicitly verify.
 
-## Output
+## Step 3 — Update MASTER_MEMORY.md
+
+Append a new row to the Session Log table in `operations/core/MASTER_MEMORY.md`:
+
+| Date | Objective | Outcome | Key Decisions | Next Step |
+
+- **Date**: today's YYYY-MM-DD
+- **Objective**: what was pursued (1 sentence)
+- **Outcome**: completed / partial / blocked — be specific
+- **Key Decisions**: anything locked or decided, or "none"
+- **Next Step**: the single first action for the next session (must match Step 5)
+
+Also update the **Current State** and **Next Steps** sections to reflect reality
+as of right now — not copy-pasted from the previous session.
+
+## Step 4 — Update ROADMAP_PROGRESS.md
+
+In `operations/engineering/ROADMAP_PROGRESS.md`:
+
+1. Move anything completed this session into the **Shipped** list
+2. Remove completed items from **Remaining** — only list things genuinely still to do
+3. Update **Validation** to reflect current check results
+4. Rewrite the **Next Session Note** from scratch — do not edit the old one in
+   place. Cross-check against BOOTSTRAP_CHECKLIST before writing: do not mention
+   items that are already checked off.
+
+## Step 5 — Consistency check
+
+Before finishing, verify these three things say the same thing:
+
+- `MASTER_MEMORY.md` → Next Steps item 1
+- `ROADMAP_PROGRESS.md` → Next Session Note first action
+- `ROADMAP_PROGRESS.md` → Remaining list
+
+If they conflict, fix them now.
+
+## Step 6 — Run rules-updater
+
+Run the `rules-updater` agent. It will scan this session for new patterns,
+constraints, or failure modes and write them to the appropriate `.claude/rules/`
+or `.claude/skills/` file. If nothing new was learned, it will say so.
+
+Commit any rule changes it produces.
+
+## Step 7 — Report
 
 Confirm:
 
-- Session log entry written (date + outcome)
-- Roadmap status updated
-- Rules updated (or "no changes")
-- Next session starter note
-
-Keep it brief.
+- Commits made (list them)
+- BOOTSTRAP_CHECKLIST items newly checked (list them, or "none")
+- MASTER_MEMORY session log entry written (date + one-line outcome)
+- ROADMAP_PROGRESS next session note updated
+- Consistency check: passed or what was fixed
+- Rules updated (or "nothing new")

@@ -1,4 +1,6 @@
-Read these files in order before doing anything else:
+You are starting a new work session. Follow these steps exactly.
+
+## Step 1 — Load context (read in order)
 
 1. `operations/core/CORE_MISSION.md`
 2. `operations/core/MASTER_MEMORY.md`
@@ -7,14 +9,39 @@ Read these files in order before doing anything else:
 5. `operations/engineering/ARCHITECTURE_OVERVIEW.md`
 6. `operations/engineering/DECISIONS_LOG.md`
 
-After reading, report:
+## Step 2 — Verify actual repo state
 
-- **Project**: one-sentence summary of what this is
-- **Active milestone**: name and goal
-- **Last session**: date, outcome, and next step from the most recent session log entry
-- **Immediate task**: the single highest-priority task to work on right now
-- **Blockers**: anything flagged as blocked or at risk
+Do not trust the docs alone. Run these checks and note the results:
 
-Then ask: "Ready to start — should I begin on [immediate task], or is there something else?"
+- `make check` — does it pass? What phase (pre-scaffold or full toolchain)?
+- Does `package.json` exist at the repo root? (indicates scaffold is initialized)
+- What does `git log --oneline -5` show? (confirms last real work done)
+- Read `operations/engineering/BOOTSTRAP_CHECKLIST.md` — are there unchecked
+  items that are actually done based on what you just verified?
 
-Do not begin implementation until the user confirms.
+If you find stale checklist items or inconsistencies between docs and actual
+state, flag them explicitly before summarizing.
+
+## Step 3 — Output the session brief
+
+Report exactly:
+
+**Project:** [one-sentence summary of what this is]
+
+**Milestone:** [ID and name] — [status: complete / partial / blocked]
+
+**Last session** (from session log): [date] — [one sentence on what was done]
+
+**Verified repo state:** [what make check returned, whether scaffold exists, last commit]
+
+**Inconsistencies found:** [anything the docs claim that contradicts actual state, or "none"]
+
+**First action this session:** [single concrete task — a command to run, a file to create, a decision to make]
+
+**Blockers:** [anything that must be resolved before that first action, or "none"]
+
+---
+
+Then ask: "Ready to start, or do you want to adjust the focus?"
+
+Do not begin any implementation until the user confirms.
