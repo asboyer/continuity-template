@@ -18,13 +18,13 @@ help:
 	@echo "  make check LINT_CMD=\"npm run lint\" FORMAT_CHECK_CMD=\"npm run format:check\" TEST_CMD=\"npm test\""
 
 lint:
-	@sh -c '$(LINT_CMD)'
+	@$(LINT_CMD)
 
 format-check:
-	@sh -c '$(FORMAT_CHECK_CMD)'
+	@$(FORMAT_CHECK_CMD)
 
 test:
-	@sh -c '$(TEST_CMD)'
+	@$(TEST_CMD)
 
 check: lint format-check test
 	@echo "All checks completed."

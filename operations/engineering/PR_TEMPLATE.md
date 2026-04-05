@@ -26,9 +26,9 @@ Details:
 ## Risks and Rollback
 
 - Risks:
-  - <risk 1>
+    - <risk 1>
 - Rollback:
-  - <rollback step>
+    - <rollback step>
 
 ## Follow-ups
 
