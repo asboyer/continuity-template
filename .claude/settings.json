@@ -1,5 +1,6 @@
 {
     "permissions": {
+        "defaultMode": "auto",
         "deny": ["Read(.env)", "Read(.env.local)", "Read(.env.*)"]
     },
     "hooks": {

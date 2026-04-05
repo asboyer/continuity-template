@@ -58,6 +58,16 @@ Use `/close-session` to automate this.
 For any session during the initial bootstrap phase, also review
 `operations/engineering/BOOTSTRAP_CHECKLIST.md` before declaring work complete.
 
+## Continuity Doc Hygiene
+
+- Status docs (`BOOTSTRAP_CHECKLIST.md`, `MASTER_MEMORY.md`, `ROADMAP_PROGRESS.md`) drift silently — audit them against actual repo state at the start of any continuity or cleanup session rather than trusting their checked boxes. `# discovered 2026-04-05`
+- Any file that claims to be "the authoritative source" for session workflow but is not an agent-loaded rules file (i.e., not in `.claude/rules/`) will diverge; keep those files as thin pointers to the rules file, not content owners. `# discovered 2026-04-05`
+
 ## Hook vs. Instruction Enforcement
 
 - `PostToolUse` hooks in `.claude/settings.json` run deterministically on every matching tool call; CLAUDE.md instructions are advisory and may be skipped. Any behavior that must happen 100% of the time (e.g., auto-format, lint on save) belongs in a hook, never in a CLAUDE.md instruction. `# discovered 2026-04-05`
+- A Prettier `PostToolUse` hook on Edit/Write combined with `defaultMode: "acceptEdits"` causes a double accept-prompt: Claude edits, hook reformats, Claude Code treats the reformat as a second pending edit requiring manual Shift-Tab. Fix: set `defaultMode: "auto"` in `.claude/settings.json`. `# discovered 2026-04-05`
+
+## Session Command Verification
+
+- Session commands (`/start-session`, `/close-session`) must verify actual repo state — run `make check`, inspect directory structure, read `BOOTSTRAP_CHECKLIST.md` — before updating or trusting any status docs. Commands that only say "update the docs" without a verification step allow stale content to propagate forward. `# discovered 2026-04-05`
