@@ -49,6 +49,11 @@ Based on the agreed stack:
 - `.pre-commit-config.yaml` — uncomment or add language-specific hooks
 - `.env.example` — add any stack-specific environment variables
 - `.claude/rules/code-style.md` — replace defaults with stack-specific conventions
+- `.claude/skills/` — if the project has a complex core domain (e.g., a payment
+  flow, a data pipeline, a specific rating or scoring system), create a
+  project-specific skill file now: `.claude/skills/<domain>/SKILL.md`. It should
+  encode the non-negotiable constraints and step-by-step workflow for that domain
+  so they don't have to be re-explained every session.
 
 ## Step 5 — Validate
 
