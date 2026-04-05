@@ -141,8 +141,13 @@ Bootstrap is not complete until
 
 | File | Purpose |
 |------|---------|
-| `CLAUDE.md` | Auto-loaded by Claude Code. Contains read order, key commands, conventions, session rules, and boundaries. |
-| `AGENTS.md` | Auto-loaded by Cursor, GitHub Copilot, and tools supporting the AGENTS.md standard. Same content as CLAUDE.md in a cross-tool format. |
+| `CLAUDE.md` | Auto-loaded by Claude Code every request. Kept intentionally lean: stack, commands, source precedence, and a pointer to `.claude/rules/`. Detailed conventions live in the rules files, not here. |
+| `AGENTS.md` | Auto-loaded by Cursor, GitHub Copilot, and other agents. Mirrors CLAUDE.md format. Also kept lean — points to `.claude/rules/` for details. |
+| `.claude/rules/` | Modular rule files loaded by Claude Code based on context. `session.md` — read order and log schema. `git.md` — commit/PR standards. `boundaries.md` — hard limits. `code-style.md` — language/framework conventions. Add project-specific rules (e.g., `data-model.md`) here. |
+| `.claude/agents/` | Custom subagent definitions (`.md` files). Each agent has a name, description, allowed tools, and domain-specific review checklist. Spawn with `/agents` in a Claude Code session. |
+| `.claude/skills/` | Agent skill stubs. Each subdirectory contains a `SKILL.md` that encodes domain knowledge and workflow for a specific repeated task. Install community skills with `npx skills add`. |
+| `.claude/settings.json` | Project-level Claude Code config: PostToolUse hooks (e.g., Prettier auto-format), permission deny rules for secrets. |
+| `.worktreeinclude` | List of files (e.g., `.env`) to copy into worktrees created by `claude --worktree`. Ensures credentials are available in isolated branches. |
 | `Makefile` | Stack-neutral build targets: `lint`, `format-check`, `test`, `check`, `init-check`. Configure via `LINT_CMD`, `FORMAT_CHECK_CMD`, `TEST_CMD`. |
 | `.pre-commit-config.yaml` | Pre-commit hooks for whitespace, YAML/JSON validation, merge conflict detection, private keys, and large files. Add language-specific hooks for your stack. |
 | `.github/workflows/ci.yml.template` | CI workflow template. Rename to `.github/workflows/ci.yml` when you instantiate a real project from this template. |

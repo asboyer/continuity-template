@@ -1,86 +1,32 @@
-# CLAUDE.md — Project Template
+# CLAUDE.md — [Project Name]
 
-## Overview
+## Stack
 
-This is a project operations scaffold for bootstrapping new software projects
-with persistent memory, engineering governance, and LLM-assisted development
-workflows. It is stack-neutral by default.
+[One line: framework · database · deployment. TypeScript/Python/etc.]
 
-## Directory Structure
-
-```
-src/              — Application source code (organize by feature/domain)
-tests/            — Test suite (mirrors src/ structure)
-docs/             — User-facing and developer documentation
-scripts/          — Utility and automation scripts
-operations/
-  core/           — Mission, persistent memory (read every session)
-  engineering/    — Standards, architecture, roadmap, decisions, templates
-  business/       — Business plan, marketing plan
-prompts/
-  start/            — First-session bootstrap prompt
-  coding_prompts/   — Implementation and refactor session prompts
-  business_prompts/ — Strategy, roadmap, and marketing prompts
-```
-
-## Key Commands
+## Commands
 
 ```bash
-make check                    # Run all quality checks (lint + format + test)
-make init-check               # Verify operations files are initialized
-make lint                     # Lint only
-make test                     # Test only
-pre-commit run --all-files    # Run all pre-commit hooks
+make check               # lint + format + test (full quality gate)
+make init-check          # verify operations files are initialized
+pre-commit run --all-files
 ```
 
 Commands are stack-neutral. Configure via `LINT_CMD`, `FORMAT_CHECK_CMD`, `TEST_CMD`.
 
-## Session Start — Read Order
-
-1. `operations/core/CORE_MISSION.md`
-2. `operations/core/MASTER_MEMORY.md`
-3. `operations/engineering/ROADMAP_PROGRESS.md`
-4. `operations/engineering/ENGINEERING_STANDARDS.md`
-5. `operations/engineering/ARCHITECTURE_OVERVIEW.md`
-6. `operations/engineering/DECISIONS_LOG.md`
-
-## Coding Conventions
-
-- Conventional Commits: `feat:`, `fix:`, `refactor:`, `docs:`, `test:`, `chore:`, `ci:`
-- One idea per commit; clear scope and intent
-- Prefer stack-idiomatic naming and tooling, with explicit, readable code as the default style
-- PRs must include: summary, why, what changed, test plan, risks, follow-ups
-- Full standards: `operations/engineering/ENGINEERING_STANDARDS.md`
-
 ## Source Precedence
 
-Latest explicit user instruction > roadmap > master memory > older docs.
-Core mission is tie-breaker for product-direction tradeoffs.
+Latest user instruction > roadmap > master memory > older docs.
+Core mission is tie-breaker for product tradeoffs.
 
-## Session Log Entry Schema
+## Rules & Conventions
 
-Every `MASTER_MEMORY.md` session log entry must include:
-- Date (YYYY-MM-DD), objective pursued, outcome (completed/partial/blocked),
-  key decisions made, next step.
+Detailed rules live in `.claude/rules/`:
 
-## Session End — Always
+- `session.md` — read order, session start/end schema
+- `git.md` — commit conventions, PR checklist
+- `boundaries.md` — hard limits (mission, memory, secrets)
+- `code-style.md` — language and framework conventions
 
-1. Update `operations/core/MASTER_MEMORY.md` (session log entry per schema above)
-2. Update `operations/engineering/ROADMAP_PROGRESS.md` (status + next)
-3. Add a concise Next Session Starter note
-
-For the first session in a new repository, also review
-`operations/engineering/BOOTSTRAP_CHECKLIST.md` before declaring the
-project ready for feature work.
-
-## Boundaries
-
-- Do NOT modify `operations/core/CORE_MISSION.md` without explicit user approval
-- Do NOT delete or overwrite session log history in `MASTER_MEMORY.md`
-- Do NOT commit `.env`, credentials, or secrets
-- Do NOT bundle unrelated changes in a single PR
-- Do NOT skip lint/test validation before declaring work complete
-
-## Prompt Reference
-
-See `prompts/PROMPT_USAGE_ORDER.md` for the full prompt sequencing guide.
+Operations context: `operations/` (mission, memory, roadmap, decisions).
+Session commands: `/start-session` · `/close-session`.

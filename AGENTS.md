@@ -1,55 +1,38 @@
-# AGENTS.md — AI Agent Instructions
+# AGENTS.md — [Project Name]
 
-## Project
+## Stack
 
-Stack-neutral project operations scaffold with persistent memory and LLM-assisted
-development workflows.
+[One line: framework · database · deployment. TypeScript/Python/etc.]
 
 ## Commands
 
 ```bash
-make check                    # All quality checks
-make lint                     # Lint only
-make format-check             # Format check only
-make test                     # Tests only
-pre-commit run --all-files    # Pre-commit hooks
+make check               # lint + format + test
+make init-check          # verify operations files
+pre-commit run --all-files
 ```
 
-Configure for your stack: `make check LINT_CMD="npm run lint" TEST_CMD="npm test"`
+## Session Start
 
-## Project Structure
+Read in order:
 
-- `src/` — Application source code (organize by feature/domain)
-- `tests/` — Test suite (mirrors src/ structure)
-- `docs/` — User-facing and developer documentation
-- `scripts/` — Utility and automation scripts
-- `operations/core/` — Mission and persistent memory (read every session)
-- `operations/engineering/` — Standards, architecture, roadmap, decisions
-- `operations/business/` — Business and marketing plans
-- `prompts/` — Session prompts organized by type (start, coding, business)
+1. `operations/core/CORE_MISSION.md`
+2. `operations/core/MASTER_MEMORY.md`
+3. `operations/engineering/ROADMAP_PROGRESS.md`
+4. `operations/engineering/DECISIONS_LOG.md`
 
-## Code Style
+## Rules & Conventions
 
-- Conventional Commits (`feat:`, `fix:`, `refactor:`, `docs:`, `test:`, `chore:`)
-- One idea per commit with clear scope
-- Prefer stack-idiomatic naming/tooling with explicit, readable code
-- PR descriptions: summary, why, what changed, test plan, risks, follow-ups
-- Full standards: `operations/engineering/ENGINEERING_STANDARDS.md`
+Full rules in `.claude/rules/` — session workflow, git conventions, boundaries,
+code style. Standards: `operations/engineering/ENGINEERING_STANDARDS.md`.
 
-## Workflow
+## Source Precedence
 
-1. Read `operations/core/CORE_MISSION.md` and `MASTER_MEMORY.md`
-2. Read `operations/engineering/ROADMAP_PROGRESS.md`
-3. For first-session bootstrap, review `operations/engineering/BOOTSTRAP_CHECKLIST.md`
-4. Implement highest-priority scoped task
-5. Validate (lint/tests/manual checks)
-6. Update `MASTER_MEMORY.md` and `ROADMAP_PROGRESS.md`
-7. End with a Next Session Starter note
+Latest user instruction > roadmap > master memory > older docs.
+Core mission is tie-breaker for product tradeoffs.
 
-## Boundaries
+## Session End
 
-- Never modify `CORE_MISSION.md` without user approval
-- Never delete session log history in `MASTER_MEMORY.md`
-- Never commit `.env`, credentials, or secrets
-- Never skip validation before declaring work complete
-- Never bundle unrelated changes in a single commit or PR
+Update `operations/core/MASTER_MEMORY.md` (session log entry) and
+`operations/engineering/ROADMAP_PROGRESS.md` (status + next). Add a Next Session
+Starter note.
